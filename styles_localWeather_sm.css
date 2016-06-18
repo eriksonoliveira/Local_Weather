@@ -1,0 +1,40 @@
+/* for small screens */
+
+@media only screen and (max-width: 768px) {
+  
+  #main {
+  height: 450px;
+}
+  
+  #main::after {
+    height: 450px;
+  }
+  
+  .forecBox {
+    width: 90%;
+    height: 250px;
+  }
+  
+  .forecBox > p {
+    font-size: 1.3em;
+  }
+  
+  .forecCondition {
+    display: block;
+    height: 90px;
+  }
+  
+  .tempForecast {
+    margin: auto;
+    margin-top: 15px;
+  }
+  
+  .iconF {
+    font-size: 3em;
+  }
+  
+  .condF {
+    font-size: .95em;
+  }
+
+}
