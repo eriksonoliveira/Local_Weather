@@ -33,6 +33,16 @@ $(document).ready(function() {
         "50n" : "wi wi-fog"
       }
 
+    //Capitalizes the fist letters of the weather description
+    function uppercase(str) {
+      str = str.split(' ');
+      for (var i = 0; i < str.length; i++){
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+      }
+      str = str.join(' ');
+      return str;
+    }
+
   //Call ip-api to get user's location
   $.getJSON("http://ip-api.com/json", function(geop) {
     //console.log(geop);
@@ -42,21 +52,12 @@ $(document).ready(function() {
     var city = geop.city;
     var country = geop.countryCode;
     
-      //Capitalizes the fist letters of the weather description
-    function uppercase(str) {
-      str = str.split(' ');
-      for (var i = 0; i < str.length; i++){
-        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
-      }
-      str = str.join(' ');
-      return str;
-    }
-    
     
     //call openweathermap to get current weather information
     $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
       console.log(currWeather.weather[0].icon);
 
+      //Calculates temperature in degrees
       function calcTempC(tempK) {
         return Math.round(tempK - 273.15);
       }
@@ -65,6 +66,7 @@ $(document).ready(function() {
         return Math.round((tempK *9/5) - 459.67);
       }
       
+      //Sets the weather variables from the JSON file
       var tCelsius = "<span>" + calcTempC(currWeather.main.temp) + "</span>";
       var tFahrenheit = "<span>" + Math.round(calcTempF(currWeather.main.temp)) + "</span>";
       var weatherIcon = currWeather.weather[0].icon;
@@ -100,8 +102,7 @@ $(document).ready(function() {
       });
       
 
-      
-      //adds icons and description to the page
+      //adds icons and weather description to the page
       $("#icon").addClass(iconsList[weatherIcon]);    
     
       description = uppercase(description);      
