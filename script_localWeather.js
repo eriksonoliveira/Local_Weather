@@ -9,6 +9,30 @@ function location(position){
   console.log(position);
 */
 $(document).ready(function() {
+
+  //list of weather icons
+       var iconsList = {
+        "01d" : "wi wi-day-sunny",
+        "02d" : "wi wi-day-cloudy",
+        "03d" : "wi wi-cloud",
+        "04d" : "wi wi-cloudy",
+        "09d" : "wi wi-showers",
+        "10d" : "wi wi-day-rain",
+        "11d" : "wi wi-thunderstorm",
+        "13d" : "wi wi-snow",
+        "50d" : "wi wi-fog",
+
+        "01n" : "wi wi-night-clear",
+        "02n" : "wi wi-night-alt-cloudy",
+        "03n" : "wi wi-cloud",
+        "04n" : "wi wi-cloudy",
+        "09n" : "wi wi-showers",
+        "10n" : "wi wi-night-alt-rain",
+        "11n" : "wi wi-thunderstorm",
+        "13n" : "wi wi-snow",
+        "50n" : "wi wi-fog"
+      }
+
   //Call ip-api to get user's location
   $.getJSON("http://ip-api.com/json", function(geop) {
     //console.log(geop);
@@ -75,28 +99,7 @@ $(document).ready(function() {
         }
       });
       
-      //list of weather icons
-       iconsList = {
-        "01d" : "wi wi-day-sunny",
-        "02d" : "wi wi-day-cloudy",
-        "03d" : "wi wi-cloud",
-        "04d" : "wi wi-cloudy",
-        "09d" : "wi wi-showers",
-        "10d" : "wi wi-day-rain",
-        "11d" : "wi wi-thunderstorm",
-        "13d" : "wi wi-snow",
-        "50d" : "wi wi-fog",
-        
-        "01n" : "wi wi-night-clear",
-        "02n" : "wi wi-night-alt-cloudy",
-        "03n" : "wi wi-cloud",
-        "04n" : "wi wi-cloudy",
-        "09n" : "wi wi-showers",
-        "10n" : "wi wi-night-alt-rain",
-        "11n" : "wi wi-thunderstorm",
-        "13n" : "wi wi-snow",
-        "50n" : "wi wi-fog"
-      }
+
       
       //adds icons and description to the page
       $("#icon").addClass(iconsList[weatherIcon]);    
@@ -134,11 +137,31 @@ $(document).ready(function() {
       
       //writes the days of the week for the forecast
       var d = new Date();
-      var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
       $.each($(".day"), function(index, value) {
-        $(this).html(days[d.getDay() + (index + 1)]);
+        var nextDay = new Date(d.getTime() + 86400 * 1000 * (index + 1));
+        console.log(nextDay);
+        $(this).html(days[nextDay.getDay()]);
       });
       
+////////////////////////////////
+      //test class
+    /*  var Pessoa = function() {
+        this.name = "nome";
+        this.genero = "genero";
+        console.log("Pessoa adicionada à lista");
+      }
+        Pessoa.prototype.dizerOla = function(){
+          alert(this.name);
+      }
+
+      //obj
+      var pessoa1 = new Pessoa();
+      pessoa1.genero = 'masc';
+      pessoa1.name = 'Erik';
+      console.log(pessoa1.genero);
+      pessoa1.dizerOla();*/
     });
 
   });

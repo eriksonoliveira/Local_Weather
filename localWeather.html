@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Your Weather Right Now  - check the weather in your city</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="styles_localWeather.css" rel="stylesheet">
+    <link href="styles_localWeather_sm.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.eot" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.svg" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.ttf" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.woff" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.woff2" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons-wind.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body onselectstart="return false">
+    <div id="main" class="jumbotron">
+      <header class="container">
+        <h1>Your Weather Right Now</h1>
+      </header>
+      <section id="infoBox">
+        <p id="cityName"></p>
+        <div id="currWeather">
+          <div class="weatherCondition">
+            <i id="icon" class=""></i>
+            <span id="condition"></span>
+          </div>
+          <span class="temperature t"><span id="temp"></span><i class="degrees"></i></span>
+          <div id="tUnits">
+            <a class="selected" id="tempC" >C</a>
+            <a class="unselected" id="tempF">F</a>
+          </div>
+          <br>
+          <div id="WRU" class="row">
+            <span id="wind" class="col-md-6"></span>
+            <span id="RU"  class="col-md-6"></span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="forecHead">3 days Forecast</h3>
+        </div>
+      </div>
+      <section id="charts" class="row">
+        <div class="col-lg-4 col-xs-4">
+          <div class="forecBox text-center">
+            <p>Today</p>
+            <div class="forec">
+              <div id ="F0" class="forecCondition">
+                <i class="iconF"></i>
+                <span class="condF"></span>
+              </div>
+              <div class="tempForecast"><span class="tMax"><i class="degrees"></i></span><span class="tMin"><i class="degrees"></i></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-xs-4">
+          <div class="forecBox text-center">
+            <p  class="day"></p>
+            <div class="forec">
+              <div id ="F1" class="forecCondition">
+                <i class="iconF"></i>
+                <span class="condF"></span>
+              </div>
+              <div class="tempForecast"><span class="tMax"><i class="degrees"></i></span><span class="tMin"><i class="degrees"></i></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-xs-4">
+          <div class="forecBox text-center">
+            <p class="day"></p>
+            <div class="forec">
+              <div id ="F2" class="forecCondition">
+                <i class="iconF"></i>
+                <span class="condF"></span>
+              </div>
+              <div class="tempForecast"><span class="tMax"><i class="degrees"></i></span><span class="tMin"><i class="degrees"></i></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="script_localWeather.js"></script>
+  </body>
+</html>
