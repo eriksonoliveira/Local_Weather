@@ -3,8 +3,6 @@
 navigator.geolocation.getCurrentPosition(location);
 }
 
-//NOTHING WRONG WITH THIS METHOD, HOWEVER, IT'S BETTER GET THE CITY NAME DIRECTLY FROM IP-API. OPENWEATHERMAP GIVES NEIGHBORHOOD NAME INSTEAD OF CITY NAME.
-
 function location(position){
   console.log(position);
 */
@@ -45,17 +43,17 @@ $(document).ready(function() {
 
   //Call ip-api to get user's location
   $.getJSON("http://ip-api.com/json", function(geop) {
-    //console.log(geop);
+    
 
     var latitude = geop.lat;
     var longitude = geop.lon;
     var city = geop.city;
     var country = geop.countryCode;
-    
+    //console.log(latitude + ' ' + longitude);
     
     //call openweathermap to get current weather information
-    $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
-      console.log(currWeather.weather[0].icon);
+    $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
+     // console.log(currWeather);
 
       //Calculates temperature in degrees
       function calcTempC(tempK) {
@@ -67,8 +65,8 @@ $(document).ready(function() {
       }
       
       //Sets the weather variables from the JSON file
-      var tCelsius = "<span>" + calcTempC(currWeather.main.temp) + "</span>";
-      var tFahrenheit = "<span>" + Math.round(calcTempF(currWeather.main.temp)) + "</span>";
+      var tCelsius = "<span>" + calcTempC(currWeather.main.temp_max) + "</span>";
+      var tFahrenheit = "<span>" + Math.round(calcTempF(currWeather.main.temp_max)) + "</span>";
       var weatherIcon = currWeather.weather[0].icon;
       var description = currWeather.weather[0].description;
       var windsp = Math.round(currWeather.wind.speed);
@@ -111,7 +109,7 @@ $(document).ready(function() {
     });
     
     //Calls openweather for forecast data
-    $.get('http://api.openweathermap.org/data/2.5/forecast/daily?q='+ city +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
+    $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
       
       //console.log(forecWeather);
 
@@ -142,7 +140,7 @@ $(document).ready(function() {
 
       $.each($(".day"), function(index, value) {
         var nextDay = new Date(d.getTime() + 86400 * 1000 * (index + 1));
-        console.log(nextDay);
+        //console.log(nextDay);
         $(this).html(days[nextDay.getDay()]);
       });
       
