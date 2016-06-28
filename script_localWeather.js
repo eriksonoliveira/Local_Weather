@@ -9,39 +9,57 @@ function location(position){
 $(document).ready(function() {
 
   //list of weather icons
-       var iconsList = {
-        "01d" : "wi wi-day-sunny",
-        "02d" : "wi wi-day-cloudy",
-        "03d" : "wi wi-cloud",
-        "04d" : "wi wi-cloudy",
-        "09d" : "wi wi-showers",
-        "10d" : "wi wi-day-rain",
-        "11d" : "wi wi-thunderstorm",
-        "13d" : "wi wi-snow",
-        "50d" : "wi wi-fog",
+   var iconsList = {
+    "01d" : "wi wi-day-sunny",
+    "02d" : "wi wi-day-cloudy",
+    "03d" : "wi wi-cloud",
+    "04d" : "wi wi-cloudy",
+    "09d" : "wi wi-showers",
+    "10d" : "wi wi-day-rain",
+    "11d" : "wi wi-thunderstorm",
+    "13d" : "wi wi-snow",
+    "50d" : "wi wi-fog",
 
-        "01n" : "wi wi-night-clear",
-        "02n" : "wi wi-night-alt-cloudy",
-        "03n" : "wi wi-cloud",
-        "04n" : "wi wi-cloudy",
-        "09n" : "wi wi-showers",
-        "10n" : "wi wi-night-alt-rain",
-        "11n" : "wi wi-thunderstorm",
-        "13n" : "wi wi-snow",
-        "50n" : "wi wi-fog"
-      }
+    "01n" : "wi wi-night-clear",
+    "02n" : "wi wi-night-alt-cloudy",
+    "03n" : "wi wi-cloud",
+    "04n" : "wi wi-cloudy",
+    "09n" : "wi wi-showers",
+    "10n" : "wi wi-night-alt-rain",
+    "11n" : "wi wi-thunderstorm",
+    "13n" : "wi wi-snow",
+    "50n" : "wi wi-fog"
+  }
 
-    //Capitalizes the fist letters of the weather description
-    function uppercase(str) {
-      str = str.split(' ');
-      for (var i = 0; i < str.length; i++){
-        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
-      }
-      str = str.join(' ');
-      return str;
+  //Capitalizes the fist letters of the weather description
+  function uppercase(str) {
+    str = str.split(' ');
+    for (var i = 0; i < str.length; i++){
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
     }
+    str = str.join(' ');
+    return str;
+  }
 
-  //Call ip-api to get user's location
+  //toggles between celsius and Fahrenheit
+
+  $("#tempF").on('click', function() {
+    if ($("#tempC").hasClass("selected")) {
+      $("#temp").html(tFahrenheit);
+      $("#tempC").removeClass("selected").addClass("unselected");
+      $("#tempF").removeClass("unselected").addClass("selected");
+    }
+  });
+
+  $("#tempC").on('click', function() {
+    if ($("#tempF").hasClass("selected")) {
+      $("#temp").html(tCelsius);
+      $("#tempF").removeClass("selected").addClass("unselected");
+      $("#tempC").removeClass("unselected").addClass("selected");
+    }
+  });
+
+  //Calls ip-api to get user's location
   $.getJSON("http://ip-api.com/json", function(geop) {
     
 
@@ -80,24 +98,8 @@ $(document).ready(function() {
       $(".degrees").addClass("wi wi-degrees");
       $("#wind").html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
       $("#RU").append("<i class=\"wi wi-humidity\"></i> Umidity " + humidity + "%");
-      
-      //toggles between celsius and Fahrenheit
-      
-      $("#tempF").on('click', function() {
-        if ($("#tempC").hasClass("selected")) {
-          $("#temp").html(tFahrenheit);
-          $("#tempC").removeClass("selected").addClass("unselected");
-          $("#tempF").removeClass("unselected").addClass("selected");
-        }
-      });
-      
-      $("#tempC").on('click', function() {
-        if ($("#tempF").hasClass("selected")) {
-          $("#temp").html(tCelsius);
-          $("#tempF").removeClass("selected").addClass("unselected");
-          $("#tempC").removeClass("unselected").addClass("selected");
-        }
-      });
+
+
       
 
       //adds icons and weather description to the page
