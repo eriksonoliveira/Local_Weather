@@ -81,8 +81,12 @@ $(document).ready(function() {
       $("#wind").html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
       $("#RU").append("<i class=\"wi wi-humidity\"></i> Umidity " + humidity + "%");
       
-      //toggles between celsius and Fahrenheit
+      //adds icons and weather description to the page
+      $("#icon").addClass(iconsList[weatherIcon]);    
+      description = uppercase(description);      
+      $("#condition").html(description);  
       
+      //toggles between celsius and Fahrenheit     
       $("#tempF").on('click', function() {
         if ($("#tempC").hasClass("selected")) {
           $("#temp").html(tFahrenheit);
@@ -99,20 +103,13 @@ $(document).ready(function() {
         }
       });
       
-
-      //adds icons and weather description to the page
-      $("#icon").addClass(iconsList[weatherIcon]);    
-    
-      description = uppercase(description);      
-      $("#condition").html(description);  
-    
     });
     
     //Calls openweather for forecast data
     $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
       
       //console.log(forecWeather);
-
+      //adds the forecast data to the page
       $.each($('.tMax'), function(index, value) {                  
         var tMaxCelsius = Math.round(forecWeather.list[index].temp.max - 273.15);  
         $(this).prepend(tMaxCelsius);
@@ -143,24 +140,7 @@ $(document).ready(function() {
         //console.log(nextDay);
         $(this).html(days[nextDay.getDay()]);
       });
-      
-////////////////////////////////
-      //test class
-    /*  var Pessoa = function() {
-        this.name = "nome";
-        this.genero = "genero";
-        console.log("Pessoa adicionada à lista");
-      }
-        Pessoa.prototype.dizerOla = function(){
-          alert(this.name);
-      }
 
-      //obj
-      var pessoa1 = new Pessoa();
-      pessoa1.genero = 'masc';
-      pessoa1.name = 'Erik';
-      console.log(pessoa1.genero);
-      pessoa1.dizerOla();*/
     });
 
   });
