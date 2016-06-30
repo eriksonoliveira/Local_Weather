@@ -41,39 +41,7 @@ $(document).ready(function() {
     return str;
   }
 
-  //toggles between celsius and Fahrenheit
-
-  $("#tempF").on('click', function() {
-    if ($("#tempC").hasClass("selected")) {
-      $("#temp").html(tFahrenheit);
-      $("#tempC").removeClass("selected").addClass("unselected");
-      $("#tempF").removeClass("unselected").addClass("selected");
-    }
-  });
-
-  $("#tempC").on('click', function() {
-    if ($("#tempF").hasClass("selected")) {
-      $("#temp").html(tCelsius);
-      $("#tempF").removeClass("selected").addClass("unselected");
-      $("#tempC").removeClass("unselected").addClass("selected");
-    }
-  });
-
-  //Calls ip-api to get user's location
-  $.getJSON("http://ip-api.com/json", function(geop) {
-    
-
-    var latitude = geop.lat;
-    var longitude = geop.lon;
-    var city = geop.city;
-    var country = geop.countryCode;
-    //console.log(latitude + ' ' + longitude);
-    
-    //call openweathermap to get current weather information
-    $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
-     // console.log(currWeather);
-
-      //Calculates temperature in degrees
+  //Calculates temperature in degrees
       function calcTempC(tempK) {
         return Math.round(tempK - 273.15);
       }
@@ -81,8 +49,40 @@ $(document).ready(function() {
       function calcTempF(tempK) {
         return Math.round((tempK *9/5) - 459.67);
       }
-      
-      //Sets the weather variables from the JSON file
+
+  //toggles between celsius and Fahrenheit
+  var unitSwitch = function(temp, tempC, tempF, tC, tF){
+    $(tempF).on('click', function() {
+      if ($(tempC).hasClass("selected")) {
+        $(temp).html(tF);
+        $(tempC).removeClass("selected").addClass("unselected");
+        $(tempF).removeClass("unselected").addClass("selected");
+      }
+    });
+
+    $(tempC).on('click', function() {
+      if ($(tempF).hasClass("selected")) {
+        $(temp).html(tC);
+        $(tempF).removeClass("selected").addClass("unselected");
+        $(tempC).removeClass("unselected").addClass("selected");
+      }
+    });
+  }
+
+  //Calls ip-api to get user's location
+  $.getJSON("http://ip-api.com/json", function(geop) {
+
+    var latitude = geop.lat;
+    var longitude = geop.lon;
+    var city = geop.city;
+    var country = geop.countryCode;
+    //console.log(latitude + ' ' + longitude);
+
+    //calls openweathermap to get current weather information
+    $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
+     // console.log(currWeather);
+
+      //Sets the weather variables from the JSON data
       var tCelsius = "<span>" + calcTempC(currWeather.main.temp_max) + "</span>";
       var tFahrenheit = "<span>" + Math.round(calcTempF(currWeather.main.temp_max)) + "</span>";
       var weatherIcon = currWeather.weather[0].icon;
@@ -99,9 +99,9 @@ $(document).ready(function() {
       $("#wind").html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
       $("#RU").append("<i class=\"wi wi-humidity\"></i> Umidity " + humidity + "%");
 
-
+      //toggles between celsius and Fahrenheit
+      unitSwitch('#temp', '#tempC', '#tempF', tCelsius, tFahrenheit);
       
-
       //adds icons and weather description to the page
       $("#icon").addClass(iconsList[weatherIcon]);    
     
@@ -115,14 +115,21 @@ $(document).ready(function() {
       
       //console.log(forecWeather);
 
+     /* function unitForecSwitch(temp, tempC, tempF) {
+        $("#tempF")on('click', function(){
+          if ($(tempC).hasClass("selected")) {
+            $(temp).html(tempF);
+          };
+        });
+      }*/
       $.each($('.tMax'), function(index, value) {                  
-        var tMaxCelsius = Math.round(forecWeather.list[index].temp.max - 273.15);  
-        $(this).prepend(tMaxCelsius);
+        var tMaxCelsius = calcTempC(forecWeather.list[index].temp.max);
+        $(this).html(tMaxCelsius + "<i class=\"wi wi-degrees\"></i>");
       });
         
       $.each($('.tMin'), function(index, value) { 
-        var tMinCelsius = Math.round(forecWeather.list[index].temp.min - 273.15);
-        $(this).prepend(tMinCelsius);
+        var tMinCelsius = calcTempC(forecWeather.list[index].temp.min);
+        $(this).html(tMinCelsius + "<i class=\"wi wi-degrees\"></i>");
       });
     
       $.each($(".iconF"), function(index, value) { 
