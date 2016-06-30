@@ -115,23 +115,45 @@ $(document).ready(function() {
       
       //console.log(forecWeather);
 
-     /* function unitForecSwitch(temp, tempC, tempF) {
-        $("#tempF")on('click', function(){
+      function tMaxCelsius(j) { return calcTempC(forecWeather.list[j].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
+      function tMaxFahrenheit(k) { return calcTempF(forecWeather.list[k].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
+      function tMinCelsius(l) {return calcTempC(forecWeather.list[l].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
+      function tMinFahrenheit(m) { return calcTempF(forecWeather.list[m].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
+      console.log(tMinCelsius(1));
+
+      function unitForecSwitch(temp, tempC, tempF, tC, tF) {
+        $(tempF).on('click', function(){
           if ($(tempC).hasClass("selected")) {
-            $(temp).html(tempF);
+            console.log("Hello");
+            $.each($(temp), function(index, value) {
+              $(this).html(tF(index));
+            });
           };
         });
-      }*/
+        $(tempC).on('click', function() {
+          if ($(tempF).hasClass("selected")) {
+            console.log("Hello");
+            $.each($(temp), function(index, value) {
+              $(this).html(tC(index));
+              console.log(tC(index));
+            });
+          };
+        });
+      }
+
       $.each($('.tMax'), function(index, value) {                  
-        var tMaxCelsius = calcTempC(forecWeather.list[index].temp.max);
-        $(this).html(tMaxCelsius + "<i class=\"wi wi-degrees\"></i>");
+        $(this).html(tMaxCelsius(index));
       });
-        
-      $.each($('.tMin'), function(index, value) { 
-        var tMinCelsius = calcTempC(forecWeather.list[index].temp.min);
-        $(this).html(tMinCelsius + "<i class=\"wi wi-degrees\"></i>");
+
+      unitForecSwitch('.tMax', '#tempC', '#tempF', tMaxCelsius, tMaxFahrenheit);
+
+
+      $.each($('.tMin'), function(index, value) {
+        $(this).html(tMinCelsius(index));
       });
     
+      unitForecSwitch('.tMin', '#tempC', '#tempF', tMinCelsius, tMinFahrenheit);
+
       $.each($(".iconF"), function(index, value) { 
         var forecIcon = forecWeather.list[index].weather[0].icon;
         $(this).addClass(iconsList[forecIcon]);
