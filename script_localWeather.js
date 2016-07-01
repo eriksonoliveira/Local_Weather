@@ -10,20 +10,21 @@ $(document).ready(function() {
 
 
 
-  //Calls ip-api to get user's location
+  //Call ip-api to get user's location
   $.getJSON("http://ip-api.com/json", function(geop) {
 
     var latitude = geop.lat;
     var longitude = geop.lon;
     var city = geop.city;
     var country = geop.countryCode;
+    var locationName = $("<span>" + city + ", " + country + "</span>");
     //console.log(latitude + ' ' + longitude);
 
-    //calls openweathermap to get current weather information
+    //call openweathermap to get current weather information
     $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
      // console.log(currWeather);
 
-      //Sets the weather variables from the JSON data
+      //Set the weather variables from the JSON data
       var tCelsius = "<span>" + calcTempC(currWeather.main.temp_max) + "</span>";
       var tFahrenheit = "<span>" + Math.round(calcTempF(currWeather.main.temp_max)) + "</span>";
       var weatherIcon = currWeather.weather[0].icon;
@@ -32,111 +33,95 @@ $(document).ready(function() {
       var winddir = Math.round(currWeather.wind.deg);
       var humidity = currWeather.main.humidity;
 
-      //adds to the page the city and country names and current weather for the user's location
-      var locationName = $("<span>" + city + ", " + country + "</span>");
+      //add to the page the city and country names and current weather for the user's location
       $("#cityName").html(locationName);
       $("#temp").html(tCelsius);
       $(".degrees").addClass("wi wi-degrees");
       $("#wind").html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
-      $("#RU").append("<i class=\"wi wi-humidity\"></i> Umidity " + humidity + "%");
+      $("#RU").append("<i class=\"wi wi-humidity\"></i> Humidity " + humidity + "%");
 
       //toggles between celsius and Fahrenheit
-      unitSwitch('#temp', '#tempC', '#tempF', tCelsius, tFahrenheit);
+      //unitSwitch('#temp', '#tempC', '#tempF', tCelsius, tFahrenheit);
       
       //adds icons and weather description to the page
       $("#icon").addClass(iconsList[weatherIcon]);    
     
       description = uppercase(description);      
       $("#condition").html(description);  
-    
-    });
-    
-    //Call openweather API for forecast data
-    $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
-      
-      //console.log(forecWeather);
 
+
+    
+      //Call openweather API for forecast data
+      $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
+
+        //console.log(forecWeather);
+
+        //calculate temp in Celsius and Fahrenheit for forecast data
       function tMaxCelsius(j) { return calcTempC(forecWeather.list[j].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
       function tMaxFahrenheit(k) { return calcTempF(forecWeather.list[k].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
       function tMinCelsius(l) {return calcTempC(forecWeather.list[l].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
       function tMinFahrenheit(m) { return calcTempF(forecWeather.list[m].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
       console.log(tMinCelsius(1));
 
-      function unitForecSwitch(temp, tempC, tempF, tC, tF) {
-        $(tempF).on('click', function(){
-          if ($(tempC).hasClass("selected")) {
-            console.log("Hello");
-            $.each($(temp), function(index, value) {
-              $(this).html(tF(index));
-            });
-          };
+        //insert forecast data on the page
+        //High
+        $.each($('.tMax'), function(index, value) {
+          $(this).html(tMaxCelsius(index));
         });
-        $(tempC).on('click', function() {
-          if ($(tempF).hasClass("selected")) {
-            console.log("Hello");
-            $.each($(temp), function(index, value) {
-              $(this).html(tC(index));
-              console.log(tC(index));
-            });
-          };
+
+        //unitForecSwitch('.tMax', '#tempC', '#tempF', tMaxCelsius, tMaxFahrenheit);
+
+        //Low
+        $.each($('.tMin'), function(index, value) {
+          $(this).html(tMinCelsius(index));
         });
-      }
 
-      //insert forecast data on the page
-      //High
-      $.each($('.tMax'), function(index, value) {                  
-        $(this).html(tMaxCelsius(index));
+        //unitForecSwitch('.tMin', '#tempC', '#tempF', tMinCelsius, tMinFahrenheit);
+
+        //weather condition
+        $.each($(".iconF"), function(index, value) {
+          var forecIcon = forecWeather.list[index].weather[0].icon;
+          $(this).addClass(iconsList[forecIcon]);
+        });
+
+        //Condition description
+        $.each($(".condF"), function(index, value) {
+          var forecDescr = forecWeather.list[index].weather[0].description;
+          forecDescr = uppercase(forecDescr);
+          $(this).html(forecDescr);
+        });
+
+        //write the days of the week for the forecast
+        var d = new Date();
+        var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+        $.each($(".day"), function(index, value) {
+          var nextDay = new Date(d.getTime() + 86400 * 1000 * (index + 1));
+          //console.log(nextDay);
+          $(this).html(days[nextDay.getDay()]);
+        });
+
+        unitSwitch(tCelsius, tFahrenheit, tMaxCelsius, tMaxFahrenheit, tMinCelsius, tMinFahrenheit);
+
+    ////////////////////////////////
+        //test class
+      /*  var Pessoa = function() {
+          this.name = "nome";
+          this.genero = "genero";
+          console.log("Pessoa adicionada à lista");
+        }
+          Pessoa.prototype.dizerOla = function(){
+            alert(this.name);
+        }
+
+        //obj
+        var pessoa1 = new Pessoa();
+        pessoa1.genero = 'masc';
+        pessoa1.name = 'Erik';
+        console.log(pessoa1.genero);
+        pessoa1.dizerOla();*/
       });
 
-      unitForecSwitch('.tMax', '#tempC', '#tempF', tMaxCelsius, tMaxFahrenheit);
-
-      //Low
-      $.each($('.tMin'), function(index, value) {
-        $(this).html(tMinCelsius(index));
-      });
-    
-      unitForecSwitch('.tMin', '#tempC', '#tempF', tMinCelsius, tMinFahrenheit);
-
-      //weather condition
-      $.each($(".iconF"), function(index, value) { 
-        var forecIcon = forecWeather.list[index].weather[0].icon;
-        $(this).addClass(iconsList[forecIcon]);
-      });
-      
-      //Condition description
-      $.each($(".condF"), function(index, value) { 
-        var forecDescr = forecWeather.list[index].weather[0].description;
-        forecDescr = uppercase(forecDescr);
-        $(this).html(forecDescr);
-      });
-      
-      //write the days of the week for the forecast
-      var d = new Date();
-      var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-
-      $.each($(".day"), function(index, value) {
-        var nextDay = new Date(d.getTime() + 86400 * 1000 * (index + 1));
-        //console.log(nextDay);
-        $(this).html(days[nextDay.getDay()]);
-      });
-      
-////////////////////////////////
-      //test class
-    /*  var Pessoa = function() {
-        this.name = "nome";
-        this.genero = "genero";
-        console.log("Pessoa adicionada à lista");
-      }
-        Pessoa.prototype.dizerOla = function(){
-          alert(this.name);
-      }
-
-      //obj
-      var pessoa1 = new Pessoa();
-      pessoa1.genero = 'masc';
-      pessoa1.name = 'Erik';
-      console.log(pessoa1.genero);
-      pessoa1.dizerOla();*/
     });
 
   });
@@ -187,21 +172,63 @@ $(document).ready(function() {
     return Math.round((tempK *9/5) - 459.67);
   }
 
-  //toggles between celsius and Fahrenheit
-  var unitSwitch = function(temp, tempC, tempF, tC, tF){
-    $(tempF).on('click', function() {
-      if ($(tempC).hasClass("selected")) {
-        $(temp).html(tF);
-        $(tempC).removeClass("selected").addClass("unselected");
-        $(tempF).removeClass("unselected").addClass("selected");
+
+
+  //Iterate through forec days and change temp unit
+  function forecUnitSwitch(elem, tempSwitch){
+    $.each($(elem), function(index, value) {
+      $(this).html(tempSwitch(index));
+    });
+  }
+
+  //toggle between celsius and Fahrenheit
+  var unitSwitch = function(tC, tF, tMaxForecCel, tMaxForecFah, tMinForecCel, tMinForecFah){
+    $('#tempF').on('click', function() {
+      if ($('#tempC').hasClass("selected")) {
+        $('#temp').html(tF);
+        //tMax
+        forecUnitSwitch('.tMax', tMaxForecFah);
+        //tMin
+        forecUnitSwitch('.tMin', tMinForecFah);
+
+        //Change the class of the unit buttons
+        $('#tempC').removeClass("selected").addClass("unselected");
+        $('#tempF').removeClass("unselected").addClass("selected");
       }
     });
 
-    $(tempC).on('click', function() {
-      if ($(tempF).hasClass("selected")) {
-        $(temp).html(tC);
-        $(tempF).removeClass("selected").addClass("unselected");
-        $(tempC).removeClass("unselected").addClass("selected");
+    $('#tempC').on('click', function() {
+      if ($('#tempF').hasClass("selected")) {
+        $('#temp').html(tC);
+        //tMax
+        forecUnitSwitch('.tMax', tMaxForecCel);
+        //tMin
+        forecUnitSwitch('.tMin', tMinForecCel);
+
+        //Change the class of the unit buttons
+        $('#tempF').removeClass("selected").addClass("unselected");
+        $('#tempC').removeClass("unselected").addClass("selected");
       }
     });
   }
+
+  //Toggle the temperature for forecast
+  /*function unitForecSwitch(temp, tempC, tempF, tC, tF) {
+    $(tempF).on('click', function(){
+      if ($(tempC).hasClass("selected")) {
+        console.log("Hello");
+        $.each($(temp), function(index, value) {
+          $(this).html(tF(index));
+        });
+      };
+    });
+    $(tempC).on('click', function() {
+      if ($(tempF).hasClass("selected")) {
+        console.log("Hello");
+        $.each($(temp), function(index, value) {
+          $(this).html(tC(index));
+          console.log(tC(index));
+        });
+      };
+    });
+  }*/
