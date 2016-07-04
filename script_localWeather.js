@@ -38,12 +38,8 @@ $(document).ready(function() {
       $("#temp").html(tCelsius);
       $(".degrees").addClass("wi wi-degrees");
       $("#wind").html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
-
       $("#RU").append("<i class=\"wi wi-humidity\"></i> Humidity " + humidity + "%");
 
-      //toggles between celsius and Fahrenheit
-      //unitSwitch('#temp', '#tempC', '#tempF', tCelsius, tFahrenheit);
-      
       //adds icons and weather description to the page
       $("#icon").addClass(iconsList[weatherIcon]);    
 
@@ -51,10 +47,8 @@ $(document).ready(function() {
       $("#condition").html(description);  
 
 
-
       //Call openweather API for forecast data
       $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
-
         //console.log(forecWeather);
 
         //calculate temp in Celsius and Fahrenheit for forecast data
@@ -76,8 +70,6 @@ $(document).ready(function() {
         $.each($('.tMin'), function(index, value) {
           $(this).html(tMinCelsius(index));
         });
-
-        //unitForecSwitch('.tMin', '#tempC', '#tempF', tMinCelsius, tMinFahrenheit);
 
         //weather condition
         $.each($(".iconF"), function(index, value) {
@@ -102,25 +94,9 @@ $(document).ready(function() {
           $(this).html(days[nextDay.getDay()]);
         });
 
+        //Toggle between Celsius and Fahrenheit on click
         unitSwitch(tCelsius, tFahrenheit, tMaxCelsius, tMaxFahrenheit, tMinCelsius, tMinFahrenheit);
 
-    ////////////////////////////////
-        //test class
-      /*  var Pessoa = function() {
-          this.name = "nome";
-          this.genero = "genero";
-          console.log("Pessoa adicionada à lista");
-        }
-          Pessoa.prototype.dizerOla = function(){
-            alert(this.name);
-        }
-
-        //obj
-        var pessoa1 = new Pessoa();
-        pessoa1.genero = 'masc';
-        pessoa1.name = 'Erik';
-        console.log(pessoa1.genero);
-        pessoa1.dizerOla();*/
       });
 
     });
@@ -174,7 +150,6 @@ $(document).ready(function() {
   }
 
 
-
   //Iterate through forec days and change temp unit
   function forecUnitSwitch(elem, tempSwitch){
     $.each($(elem), function(index, value) {
@@ -186,10 +161,11 @@ $(document).ready(function() {
   var unitSwitch = function(tC, tF, tMaxForecCel, tMaxForecFah, tMinForecCel, tMinForecFah){
     $('#tempF').on('click', function() {
       if ($('#tempC').hasClass("selected")) {
+        //Current temp
         $('#temp').html(tF);
-        //tMax
+        //tMax forecast
         forecUnitSwitch('.tMax', tMaxForecFah);
-        //tMin
+        //tMin forecast
         forecUnitSwitch('.tMin', tMinForecFah);
 
         //Change the class of the unit buttons
@@ -200,10 +176,11 @@ $(document).ready(function() {
 
     $('#tempC').on('click', function() {
       if ($('#tempF').hasClass("selected")) {
+        //Current temp
         $('#temp').html(tC);
-        //tMax
+        //tMax forecast
         forecUnitSwitch('.tMax', tMaxForecCel);
-        //tMin
+        //tMin forecast
         forecUnitSwitch('.tMin', tMinForecCel);
 
         //Change the class of the unit buttons
@@ -212,24 +189,3 @@ $(document).ready(function() {
       }
     });
   }
-
-  //Toggle the temperature for forecast
-  /*function unitForecSwitch(temp, tempC, tempF, tC, tF) {
-    $(tempF).on('click', function(){
-      if ($(tempC).hasClass("selected")) {
-        console.log("Hello");
-        $.each($(temp), function(index, value) {
-          $(this).html(tF(index));
-        });
-      };
-    });
-    $(tempC).on('click', function() {
-      if ($(tempF).hasClass("selected")) {
-        console.log("Hello");
-        $.each($(temp), function(index, value) {
-          $(this).html(tC(index));
-          console.log(tC(index));
-        });
-      };
-    });
-  }*/
