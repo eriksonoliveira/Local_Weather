@@ -10,6 +10,14 @@
     height: 450px;
   }
   
+  #infoBox {
+    margin: auto;
+  }
+
+  #charts {
+  margin-top: 20px;
+}
+
   .forecBox {
     width: 90%;
     height: 250px;

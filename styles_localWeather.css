@@ -1,6 +1,6 @@
-#main::after {
+/*#main::after {
   content: "";
-  background: url("http://cdn.pcwallart.com/images/night-sky-clouds-wallpaper-3.jpg")  no-repeat;
+  background: url("Images/clear_sky_night.jpg")  no-repeat;
   background-position: top center;
   background-size: cover;
   background-attachment: fixed;
@@ -13,9 +13,10 @@
   position: absolute;
   z-index: -1;
 }
+*/
 
 #main {
-  background: rgba(06, 90, 138, .65);
+  background: rgba(06, 90, 138, .95);
   background-size: cover;
   height: 550px;
   box-shadow: 0 10px 15px #aaa;
@@ -154,7 +155,7 @@ h1, h3 {
 }
 
 #charts {
-  margin-top: 35px;
+  margin-top: 30px;
 }
 
 .col-lg-4 {
@@ -170,6 +171,7 @@ h1, h3 {
   height: 190px;
   margin: auto;
   border: 2px solid gray;
+  box-shadow: 0 5px 15px #aaa;
 }
 
 .forecBox > p {
