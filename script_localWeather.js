@@ -37,6 +37,7 @@ $(document).ready(function() {
       $("#cityName").html(locationName);
       $("#temp").html(tCelsius);
       $(".degrees").addClass("wi wi-degrees");
+      $("#tUnits > a, #today").show();
       $("#wind").html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
       $("#RU").append("<i class=\"wi wi-humidity\"></i> Humidity " + humidity + "%");
 

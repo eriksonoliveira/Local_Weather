@@ -21,14 +21,14 @@
       <header class="container">
         <h1>Your Weather Right Now</h1>
       </header>
-      <section id="infoBox">
+      <section id="infoBox" class="pagination-center">
         <p id="cityName"></p>
-        <div id="currWeather">
+        <div id="currWeather" class="text-center">
           <div class="weatherCondition">
             <i id="icon" class=""></i>
             <span id="condition"></span>
           </div>
-          <span class="temperature t"><span id="temp"></span><i class="degrees"></i></span>
+          <span class="temperature text-center"><span id="temp"></span><i class="degrees"></i></span>
           <div id="tUnits">
             <a class="selected" id="tempC" >C</a>
             <a class="unselected" id="tempF">F</a>
@@ -51,7 +51,7 @@
       <section id="charts" class="row">
         <div class="col-lg-4 col-xs-4">
           <div class="forecBox text-center">
-            <p>Today</p>
+            <p id="today">Today</p>
             <div class="forec">
               <div id ="F0" class="forecCondition">
                 <i class="iconF"></i>
@@ -86,6 +86,8 @@
           </div>
         </div>
       </section>
+      <footer>
+      </footer>
     </div>
 
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
