@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     //call openweathermap to get current weather information
     $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
-     // console.log(currWeather);
+      //console.log(currWeather);
 
       //Set the weather variables from the JSON data
       var tCelsius = "<span>" + calcTempC(currWeather.main.temp_max) + "</span>";
@@ -41,9 +41,9 @@ $(document).ready(function() {
       $("#wind").html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
       $("#RU").append("<i class=\"wi wi-humidity\"></i> Humidity " + humidity + "%");
 
-      //adds icons and weather description to the page
+      //add icon and weather description to the page
       $("#icon").addClass(iconsList[weatherIcon]);    
-
+      //condition text
       description = uppercase(description);      
       $("#condition").html(description);  
 
@@ -57,7 +57,7 @@ $(document).ready(function() {
       function tMaxFahrenheit(k) { return calcTempF(forecWeather.list[k].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
       function tMinCelsius(l) {return calcTempC(forecWeather.list[l].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
       function tMinFahrenheit(m) { return calcTempF(forecWeather.list[m].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
-      console.log(tMinCelsius(1));
+      //console.log(tMinCelsius(1));
 
         //insert forecast data on the page
         //High
@@ -78,9 +78,13 @@ $(document).ready(function() {
           $(this).addClass(iconsList[forecIcon]);
         });
 
-        //Condition description
+        //Condition text
         $.each($(".condF"), function(index, value) {
           var forecDescr = forecWeather.list[index].weather[0].description;
+          //Make sure description fits the space
+          if ((forecDescr == "heavy intensity rain") || (forecDescr == "very heavy rain"))
+            {forecDescr = "heavy rain";}
+
           forecDescr = uppercase(forecDescr);
           $(this).html(forecDescr);
         });
