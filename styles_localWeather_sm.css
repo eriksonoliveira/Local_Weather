@@ -6,8 +6,12 @@
   height: 450px;
 }
   
-  #main::after {
+  /*#main::after {
     height: 450px;
+  }*/
+
+  .container {
+    max-width: 570px;
   }
   
   #infoBox {
@@ -20,9 +24,18 @@
 
   .forecBox {
     width: 90%;
+    min-width: 60px;
     height: 250px;
   }
   
+  .box1 {
+    margin-right: -20px;
+  }
+
+  .box3 {
+    margin-left: -20px;
+  }
+
   .forecBox > p {
     font-size: 1.3em;
   }

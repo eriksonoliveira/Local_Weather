@@ -16,8 +16,8 @@
 */
 
 #main {
-  background: rgba(06, 90, 138, 1);
-  background-size: cover;
+  /*background: rgba(06, 90, 138, 1);
+  background-size: cover;*/
   height: 550px;
   box-shadow: 0 10px 15px #aaa;
 }
@@ -86,7 +86,7 @@ h1, h3 {
   display: inline-block;
   box-sizing: border-box;
   width: 27px;
-  margin-left: 10px;
+  margin-left: 8px;
   padding: 5px;
   font-size: 1.4em;
   position: relative;
@@ -114,7 +114,7 @@ h1, h3 {
   cursor: pointer;
   color: #bbb;
   margin-left: 0px;
-  border: 1px solid rgba(06, 90, 138, 1);
+  border: 1px solid rgba(06, 90, 138, 0);
   padding: 2px;
   /*color: #47b;*/
 }
@@ -163,7 +163,7 @@ h1, h3 {
   max-width: 80px;
   position: relative;
   top: 25px;
-  left: -15px;
+  left: -30px;
 }
 
 #charts {
@@ -176,13 +176,14 @@ h1, h3 {
 
 .forecHead {
   font-size: 1.8em;
+  margin-top: 15px;
 }
 
 .forecBox {
   width: 200px;
   height: 190px;
   margin: auto;
-  background: rgba(06, 90, 138, 1);
+  /*background: rgba(06, 90, 138, 1);*/
   padding-top: 2px;
   border: 4px solid rgba(06, 90, 138, 1);
   box-shadow: 0 5px 15px #aaa;
@@ -191,7 +192,7 @@ h1, h3 {
 }
 
 .forecBox:hover {
-  background: rgba(06, 90, 138, .85);
+  /*background: rgba(06, 90, 138, .55);*/
   border: 4px solid #aaa;
 }
 
@@ -251,4 +252,15 @@ h1, h3 {
 
 footer {
   margin-top: 40px;
+}
+
+/***BACKGROUNDS***/
+#main.a01d, #main.a02d, .forecBox.a01d, .forecBox.a02d {
+  background-color: rgba(26, 170, 238, 1);
+  background-size: cover;
+}
+
+#main.a01n, #main.a02n, .forecBox.a01n, .forecBox.a02n {
+  background-color: rgba(06, 90, 138, 1);
+  background-size: cover;
 }
