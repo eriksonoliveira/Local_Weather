@@ -29,7 +29,6 @@ $(document).ready(function() {
 
       var weatherIcon = currWeather.weather[0].icon;
       var backgroundCol = "a" + weatherIcon.toString();
-      console.log(backgroundCol);
       var description = currWeather.weather[0].description;
       var windsp = Math.round(currWeather.wind.speed);
       var winddir = Math.round(currWeather.wind.deg);
@@ -50,7 +49,7 @@ $(document).ready(function() {
       description = uppercase(description);      
       $("#condition").html(description);
       //background
-      $("#main, .forecBox").addClass(backgroundCol);
+      $("#main, .forecBox").addClass("a03n");
 
 
       /***Call openweather API for forecast data***/
