@@ -40,7 +40,7 @@ $(document).ready(function() {
       $(".degrees").addClass("wi wi-degrees");
       $("#tUnits > a, #today").show();
       $("#wind").html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
-      $("#RU").append("<i class=\"wi wi-humidity\"></i> Humidity " + humidity + "%");
+      $("#RU").append("<i class=\"wi wi-humidity\"></i>" + "  " + " Humidity " + humidity + "%");
 
       /***add weather icon and description to the page and change backgound***/
       //icon
@@ -49,7 +49,7 @@ $(document).ready(function() {
       description = uppercase(description);      
       $("#condition").html(description);
       //background
-      $("#main, .forecBox").addClass("a03n");
+      $("#main").addClass(backgroundCol);
 
 
       /***Call openweather API for forecast data***/
