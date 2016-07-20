@@ -15,6 +15,7 @@
 }
 */
 
+
 #main {
   /*background: rgba(06, 90, 138, 1);
   background-size: cover;*/
@@ -43,8 +44,8 @@ h1, h3 {
   color: white;
   max-height: 18em;
   width: 21em;
-  margin: 30px auto;
-  padding: 25px 20px 30px 20px;
+  margin: 35px auto;
+  padding: 0px 10px;
   /*background-color: rgba(240, 240, 240, .55);*/
   z-index: 1;
   border-radius: 1%;
@@ -53,7 +54,7 @@ h1, h3 {
 #icon {
   font-size: 4em;
   text-align: center;
-  margin-left: 5px;
+  margin-left: -8px;
   padding-bottom: 5px;
 }
 
@@ -73,7 +74,8 @@ h1, h3 {
 
 #currWeather {
   margin-top: -10px;
-  height: 11.5em
+  height: 11.5em;
+
 }
 
 #tUnits {
@@ -106,7 +108,7 @@ h1, h3 {
 
 .unselected {
   cursor: pointer;
-  color: #838383;
+  color: #c3c3c3;
   margin-left: 0px;
   border: 1px solid rgba(06, 90, 138, 0);
   padding: 2px;
@@ -121,6 +123,15 @@ h1, h3 {
   color: #838383;
   border: 1px solid white;
 }
+
+.weatherCondition {
+  display: inline-block;
+  max-width: 80px;
+  position: relative;
+  top: 25px;
+  left: -35px;
+}
+
 #condition {
   display: block;
   text-align: center;
@@ -130,7 +141,13 @@ h1, h3 {
 }
 
 #WRU {
-  margin-top: 30px;
+  width: 16em;
+  margin: 25px auto 0 auto;
+  font-size: .9em;
+}
+
+#wind {
+  float: left;
 }
 
 #wind i {
@@ -153,16 +170,13 @@ h1, h3 {
 }
 
 
-.weatherCondition {
-  display: inline-block;
-  max-width: 80px;
-  position: relative;
-  top: 25px;
-  left: -30px;
+
+.forecast {
+  font-size: 20px;
 }
 
 #charts {
-  margin-top: 30px;
+  margin-top: 35px;
 }
 
 .col-lg-4 {
@@ -170,8 +184,8 @@ h1, h3 {
 }
 
 .forecHead {
-  font-size: 1.8em;
-  margin-top: 15px;
+  font-size: 1.3em;
+  margin-top: 25px;
 }
 
 .forecBox {
@@ -186,7 +200,7 @@ h1, h3 {
   box-sizing: border-box;
 }
 
- .box1 {
+ /*.box1 {
    margin-right: -35px;
    border-left: 1px solid #777;
  }
@@ -200,14 +214,14 @@ h1, h3 {
   border-left: 1px solid #777;
   border-right: 1px solid #777;
 }
-
+*/
 .forecBox:hover {
   /*background: rgba(06, 90, 138, .55);*/
   border: 4px solid #aaa;
 }
 
 .forecBox > p {
-  font-size: 1.6em;
+  font-size: 1.1em;
   height: 30px;
   margin-top: 10px;
 }
@@ -224,7 +238,7 @@ h1, h3 {
 }
 
 .iconF {
-  font-size: 4em;
+  font-size: 3em;
   text-align: center;
   margin-left: 5px;
   margin-bottom: 5px;
@@ -233,7 +247,7 @@ h1, h3 {
 }
 
 .tempForecast {
-  font-size: 1.9em;
+  font-size: 1.5em;
   display: inline-block;
   margin-left: 15px;
   position: relative;
@@ -250,7 +264,7 @@ h1, h3 {
   display: block;
 }
 .condF {
-  font-size: .9em;
+  font-size: .7em;
   display: inherit;
 }
 
@@ -297,3 +311,4 @@ footer {
   background: -moz-linear-gradient(to bottom, #2C3E50 , #E8E8E8);
   background-size: cover;
 }
+

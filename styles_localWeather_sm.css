@@ -1,35 +1,73 @@
 /* for small screens */
 
 @media only screen and (max-width: 768px) {
-  
+  #infoBox {
+    font-size: 18px;
+  }
+
   #main {
-  height: 410px;
-}
-  
-  /*#main::after {
-    height: 450px;
-  }*/
+    height: 410px;
+  }
 
   .container {
     max-width: 570px;
   }
 
-  #infoBox {
+  .forecast {
+    font-size: 18px;
+  }
+
+    .forecBox {
+    width: 90%;
+    height: 250px;
+  }
+
+  .forecCondition {
+    display: block;
+    height: 90px;
+  }
+
+  .tempForecast {
     margin: auto;
-    font-size: 16px;
+    margin-top: 15px;
+  }
+
+}
+
+@media only screen and (max-width: 450px) {
+  
+  #main {
+  height: 410px;
+}
+
+  #infoBox {
+    margin: 30px auto;
+    font-size: 15px;
+  }
+
+  #icon {
+    margin-left: 10px;
   }
 
   #wind {
-    margin-left: -35px;
+    /*margin-left: -35px;*/
   }
 
   #RU {
-    margin-right: 20px;
+    /*margin-right: 20px;*/
   }
 
+  .forecast {
+    font-size: 15px;
+  }
+
+  .forecHead {
+    font-size: 1.3em;
+  }
+  
   #charts {
-  margin-top: 20px;
-}
+    margin-top: 20px;
+  }
 
   .forecBox {
     width: 90%;
@@ -38,7 +76,7 @@
   }
 
   .forecBox > p {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
   
   .forecCondition {
@@ -56,7 +94,11 @@
   }
   
   .condF {
-    font-size: .95em;
+    font-size: .80em;
   }
 
+}
+
+.weatherCondition {
+  left: -10px;
 }
