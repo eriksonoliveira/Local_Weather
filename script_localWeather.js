@@ -50,6 +50,7 @@ $(document).ready(function() {
       $("#condition").html(description);
       //background
       $("#main").addClass(backgroundCol);
+      //$("#main").addClass("a01n");
 
 
       /***Call openweather API for forecast data***/
@@ -103,7 +104,7 @@ $(document).ready(function() {
           $(this).html(days[nextDay.getDay()]);
         });
 
-        /***Toggle between Celsius and Fahrenheit on click event***/
+        /***Call method to toggle between Celsius and Fahrenheit on click event***/
         unitSwitch(tCelsius, tFahrenheit, tMaxCelsius, tMaxFahrenheit, tMinCelsius, tMinFahrenheit);
 
       });
@@ -160,16 +161,18 @@ $(document).ready(function() {
 
 
   //Iterate through forec days and change temp unit
-  function forecUnitSwitch(elem, tempSwitch){
+  function forecUnitSwitch(elem, getTemp){
     $.each($(elem), function(index, value) {
-      $(this).html(tempSwitch(index));
+      $(this).html(getTemp(index));
     });
   }
 
   //toggle between celsius and Fahrenheit
   var unitSwitch = function(tC, tF, tMaxForecCel, tMaxForecFah, tMinForecCel, tMinForecFah){
+    //Fahrenheit
     $('#tempF').on('click', function() {
       if ($('#tempC').hasClass("selected")) {
+        $("#temp, .tMax, .tMin").hide();
         //Current temp
         $('#temp').html(tF);
         //tMax forecast
@@ -180,11 +183,13 @@ $(document).ready(function() {
         //Change the class of the unit buttons
         $('#tempC').removeClass("selected").addClass("unselected");
         $('#tempF').removeClass("unselected").addClass("selected");
+        $("#temp, .tMax, .tMin").fadeIn(500);
       }
     });
-
+    //Celsius
     $('#tempC').on('click', function() {
       if ($('#tempF').hasClass("selected")) {
+        $("#temp, .tMax, .tMin").hide();
         //Current temp
         $('#temp').html(tC);
         //tMax forecast
@@ -195,6 +200,7 @@ $(document).ready(function() {
         //Change the class of the unit buttons
         $('#tempF').removeClass("selected").addClass("unselected");
         $('#tempC').removeClass("unselected").addClass("selected");
+        $("#temp, .tMax, .tMin").fadeIn(500);
       }
     });
   }
