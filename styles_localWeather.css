@@ -11,6 +11,7 @@ body * {
 header {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 500;
+  text-shadow: 1px 1px black;
   background-color: transparent;
   position: relative;
   color: white;
@@ -44,8 +45,7 @@ h1, h3 {
 }
 
 .temperature {
-  margin: auto;
-  height: 80px;
+  margin: auto 10px;
   font-size: 5em;
   font-weight: 500;
   /*position: relative;
@@ -67,7 +67,6 @@ h1, h3 {
   display: inline-block;
   box-sizing: border-box;
   width: 27px;
-  margin-left: 8px;
   padding: 5px;
   font-size: 1.4em;
   position: relative;
@@ -84,7 +83,7 @@ h1, h3 {
 
 .selected {
   color: white;
-  padding: 2px;
+  padding: 0px;
   font-weight: 600;
   font-size: 1.18em;
   cursor: default;
@@ -114,7 +113,7 @@ h1, h3 {
   max-width: 80px;
   position: relative;
   top: 25px;
-  left: -35px;
+
 }
 
 #condition {
@@ -122,13 +121,13 @@ h1, h3 {
   text-align: center;
   margin-top: 10px;
   font-size: .8em;
-  display:block;
+  display: block;
 }
 
 #WRU {
   font-size: .9em;
   font-weight: 100;
-  width: 16em;
+  width: 16.5em;
   margin: 25px auto 0 auto;
 
 }
@@ -140,6 +139,10 @@ h1, h3 {
 #wind i {
  /*color: #36a;*/
   font-size: 20px;
+}
+
+#line {
+  border-left: 1px solid white;
 }
 
 #RU {
@@ -155,8 +158,6 @@ h1, h3 {
 .iconColor {
   color: darkblue;
 }
-
-
 
 .forecast {
   font-size: 20px;
@@ -186,8 +187,6 @@ h1, h3 {
   color: white;*/
   box-sizing: border-box;
 }
-
-
 
 .forecBox > p {
   font-size: 1.1em;
@@ -252,7 +251,7 @@ footer {
 /***BACKGROUNDS***/
 /*clear*/
 /*day*/
-#main.a01d, #main.a02d, .forecBox.a01d, .forecBox.a02d {
+#main.a01d, #main.a02d {
   background-color: #007AD6;
   background: linear-gradient(to bottom, #007AD6, #80E6FF);
   background: -webkit-linear-gradient(to bottom, #007AD6, #80E6FF);
@@ -260,7 +259,7 @@ footer {
   background-size: cover;
 }
 /*night*/
-#main.a01n, #main.a02n, .forecBox.a01n, .forecBox.a02n {
+#main.a01n, #main.a02n {
   background-color: #004AB9;
   background: linear-gradient(to bottom, #00132E , #004AB9);
   background: -webkit-linear-gradient(to bottom, #00132E , #004AB9);
@@ -269,16 +268,19 @@ footer {
 }
 
 /*cloudy*/
-#main.a03d, #main.a04d, .forecBox.a03d, .forecBox.a04d {
-  background-color: rgba(100, 100, 100, .7);
+#main.a03d, #main.a04d, #main.a09d, #main.a10d, #main.a11d, #main.a13d, #main.a50d {
+  background-color: #B9B9B9;
+  background: linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background: -webkit-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background: -moz-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
   background-size: cover;
 }
 
-#main.a03n, #main.a04n, .forecBox.a03n, .forecBox.a04n {
+#main.a03n, #main.a04n, #main.a09n, #main.a10n, #main.a11n, #main.a13n, #main.a50n {
   background-color: #B9B9B9;
-  background: linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background: linear-gradient(to bottom, #2C3E50 , #C8C8C8);
   background: -webkit-linear-gradient(to bottom, #2C3E50 , #E8E8E8);
-  background: -moz-linear-gradient(to bottom, #2C3E50 , #E8E8E8);
+  background: -moz-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
   background-size: cover;
 }
 
