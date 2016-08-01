@@ -94,18 +94,117 @@ $(document).ready(function() {
           $(this).html(forecDescr);
         });
 
-        /***write the days of the week for the forecast***/
+
+        /****CREATE ARRAY FOR TEMP*****/
+        /*******************************/
+        var temps = [];
+
+        for ( i = 0; i < forecWeather.list.length; i++) {
+          var mat = calcTempC(forecWeather.list[i].temp.max),
+              mit = calcTempC(forecWeather.list[i].temp.min);
+          temps.push({
+            max: mat,
+            min: mit,
+            day: null
+          });
+        }
+
+
+        /***Write the days of the week for the forecast***/
         var d = new Date();
-        var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+        var week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
         $.each($(".day"), function(index, value) {
-          var nextDay = new Date(d.getTime() + 86400 * 1000 * (index + 1));
+          var gettDay = new Date(d.getTime() + 86400 * 1000 * (index));
           //console.log(nextDay);
-          $(this).html(days[nextDay.getDay()]);
+          var weekDay = week[gettDay.getDay()];
+          var weekDayNum = gettDay.getDay();
+          $(this).html(weekDay);
+          temps[index].day = weekDayNum;
         });
+
+        /******DRAW TEMP LINE CHART*******/
+        var margin = {top: 20, right: 20, bottom: 30, left: 50},
+          width = 400 - margin.left - margin.right,
+          height = 300 - margin.top - margin.bottom;
+
+        temps.forEach(function(d){
+          d.day = +d.day;
+          d.max = +d.max;
+          d.min = +d.min;
+        });
+
+        var x = d3.scale.linear()
+          .range([0, width]);
+
+        var y = d3.scale.linear()
+          .range([height, 0]);
+
+        x.domain(d3.extent(temps, function(d) { return d.day; }));
+
+        var maxY = d3.max(temps, function(d) { return d.max; });
+        var minY = d3.min(temps, function(d) { return d.min - 5; });
+
+        y.domain([minY, maxY]);
+
+        var graph = d3.select("#graph").append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)   .append("g")
+          .attr("transform", "translate(50, 50)");
+
+        var line = d3.svg.line()
+          .x(function(d) { return x(d.day); })
+          .y(function(d) { return y(d.max); });
+
+        var line2 = d3.svg.line()
+          .x(function(d) { return x(d.day) })
+          .y(function(d) { return y(d.min) });
+
+        graph.append("path")
+          .data([temps])
+          .attr("class", "line")
+          .attr("d", line)
+          .attr("stroke", "#000")
+          .attr("stroke-width", 2.0)
+          .attr("fill", "none");
+
+        graph.append("path")
+          .data([temps])
+          .attr("class", "line")
+          .attr("d", line2)
+          .attr("stroke", "#838383")
+          .attr("stroke-width", 2.0)
+          .attr("fill", "none");
+
+        graph.selectAll("dot")
+        .data([temps])
+        .enter().append("g")
+        .attr("class", "dot")
+        .selectAll("circle")
+        .data(function(d) { return d; })
+        .enter().append("circle")
+        .attr("r", 3.0)
+        .attr("fill", "#000")
+        //.attr("stroke", "#a22")
+        .attr("cx", function(d, i) { return x(d.day); })
+        .attr("cy", function(d, i) { return y(d.max); });
+
+        graph.selectAll("dot")
+        .data([temps])
+        .enter().append("g")
+        .attr("class", "dot")
+        .selectAll("circle")
+        .data(function(d) { return d; })
+        .enter().append("circle")
+        .attr("r", 3.0)
+        .attr("fill", "#838383")
+        //.attr("stroke", "#08c")
+        .attr("cx", function(d, i) { return x(d.day); })
+        .attr("cy", function(d, i) { return y(d.min); });
 
         /***Call method to toggle between Celsius and Fahrenheit on click event***/
         unitSwitch(tCelsius, tFahrenheit, tMaxCelsius, tMaxFahrenheit, tMinCelsius, tMinFahrenheit);
+
 
       });
 
