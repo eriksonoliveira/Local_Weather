@@ -247,6 +247,7 @@ h1, h3 {
 
 footer {
   margin-top: 40px;
+  clear: both;
 }
 
 /***BACKGROUNDS***/
@@ -303,3 +304,7 @@ footer {
   fill: FireBrick;
 }
 
+
+#graph {
+  margin-bottom: 50px;
+}
