@@ -194,7 +194,8 @@ $(document).ready(function() {
         .interpolate("cardinal")
         .x(function(d) { return x(d.day) })
         .y(function(d) { return y(d.min) });
-      graph.append("path")
+
+      var path = graph.append("path")
         .data([temps])
         .attr("class", "line")
         .attr("d", line)
@@ -202,13 +203,32 @@ $(document).ready(function() {
         .attr("stroke-width", 1.5)
         .attr("fill", "none");
 
-      graph.append("path")
+     var path2 = graph.append("path")
         .data([temps])
         .attr("class", "line")
         .attr("d", line2)
         .attr("stroke", "#838383")
         .attr("stroke-width", 1.5)
         .attr("fill", "none");
+
+      var totalLength = path.node().getTotalLength(),
+          totalLength2 = path2.node().getTotalLength();
+
+      path
+        .attr("stroke-dasharray", totalLength + " " + totalLength)
+        .attr("stroke-dashoffset", totalLength)
+        .transition()
+          .duration(1000)
+          .ease("linear")
+          .attr("stroke-dashoffset", 0);
+
+      path2
+        .attr("stroke-dasharray", totalLength2 + " " + totalLength2)
+        .attr("stroke-dashoffset", totalLength2)
+        .transition()
+          .duration(1000)
+          .ease("linear")
+          .attr("stroke-dashoffset", 0);
 
       graph.selectAll("dot")
         .data([temps])
@@ -234,6 +254,68 @@ $(document).ready(function() {
         //.attr("stroke", "#08c")
         .attr("cx", function(d, i) { return x(d.day); })
         .attr("cy", function(d, i) { return y(d.min); });
+
+      /*graph.append('g')
+        .classed('labels-group', true)
+        .selectAll('text')
+        .data([temps])
+        .enter()
+        .append('text')
+        .classed('label', true)
+        .attr({
+          'x': function(d, i) { return x(d.day); },
+          'y': function(d, i) { return y(d.min); }
+        })
+        .text(function(d, i) {
+          return d.max;
+        });
+        */
+
+        graph.selectAll("label")
+          .data([temps])
+          .enter().append("g")
+          .attr("class", "label")
+          .selectAll("text")
+          .data(function(d) { return d; })
+          .enter().append("text")
+          .attr("x", function(d, i) { return x(d.day); })
+          .attr("y", function(d, i) { return y(d.max); })
+          .attr("dx", "-.3em")
+          .attr("dy", "-.65em")
+          .attr("fill", "#000")
+          .text(function(d) { return d.max; });
+
+        graph.selectAll("label")
+          .data([temps])
+          .enter().append("g")
+          .attr("class", "label")
+          .selectAll("text")
+          .data(function(d) { return d; })
+          .enter().append("text")
+          .attr("x", function(d, i) { return x(d.day); })
+          .attr("y", function(d, i) { return y(d.min); })
+          .attr("dx", "-.3em")
+          .attr("dy", "1.2em")
+          .attr("fill", "#000")
+          .text(function(d) { return d.min; });
+
+
+
+        /*graph.selectAll("text")
+          .data([temps])
+          .enter()
+          .append("text")
+          .attr("transform", "translate("+ function(d, i) { return x(d.day); } +","+ function(d, i) { return y(d.min); } +")")
+          .attr("dy", ".35em")
+          .attr("text-anchor", "start")
+          .style("fill", "red")*/
+          /*.attr({
+          'x': function(d, i) { return x(d.day); },
+          'y': function(d, i) { return y(d.min); }
+          })*/
+          /*.text(function(d, i) {
+          return d.max;
+        }); */
 
       /*graph.append("g")
         .attr("class", "x axis")
