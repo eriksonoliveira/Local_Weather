@@ -55,13 +55,13 @@ $(document).ready(function() {
 
       /***Call openweather API for forecast data***/
       $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
-        //console.log(forecWeather);
+        console.log(forecWeather);
 
       /***calculate temp in Celsius and Fahrenheit for forecast data***/
-      function tMaxCelsius(j) { return calcTempC(forecWeather.list[j].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
-      function tMaxFahrenheit(k) { return calcTempF(forecWeather.list[k].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
-      function tMinCelsius(l) {return calcTempC(forecWeather.list[l].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
-      function tMinFahrenheit(m) { return calcTempF(forecWeather.list[m].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
+      function tMaxCelsius(j) { return calcTempMaxC(forecWeather.list[j].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
+      function tMaxFahrenheit(k) { return calcTempMaxF(forecWeather.list[k].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
+      function tMinCelsius(l) {return calcTempMinC(forecWeather.list[l].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
+      function tMinFahrenheit(m) { return calcTempMinF(forecWeather.list[m].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
       //console.log(tMinCelsius(1));
 
       /***insert forecast data on the page***/
@@ -77,7 +77,7 @@ $(document).ready(function() {
         $(this).html(tMinCelsius(index));
       });
 
-      //weather condition
+      //weather condition icon
       $.each($(".iconF"), function(index, value) {
         var forecIcon = forecWeather.list[index].weather[0].icon;
         $(this).addClass(iconsList[forecIcon]);
@@ -175,6 +175,7 @@ $(document).ready(function() {
 
       y.domain([minY, maxY]);
 
+      //Define the svg element
       var graph = d3.select("#graph").append("svg")
         //.attr("width", width + margin.left + margin.right)
         //.attr("height", height + margin.top + margin.bottom)
@@ -185,6 +186,7 @@ $(document).ready(function() {
         .append("g")
         .attr("transform", "translate(20, 30)");
 
+      //Draw Lines
       var line = d3.svg.line()
         .interpolate("cardinal")
         .x(function(d) { return x(new Date(d.day)); })
@@ -230,6 +232,7 @@ $(document).ready(function() {
           .ease("linear")
           .attr("stroke-dashoffset", 0);
 
+      //Draw Dots
       graph.selectAll("dot")
         .data([temps])
         .enter().append("g")
@@ -271,6 +274,7 @@ $(document).ready(function() {
         });
         */
 
+        //Show temperature values with the dots
         graph.selectAll("label")
           .data([temps])
           .enter().append("g")
@@ -324,6 +328,7 @@ $(document).ready(function() {
         .call(xAxis);
         */
 
+        //END CHART
 
         /***Call method to toggle between Celsius and Fahrenheit on click event***/
         unitSwitch(tCelsius, tFahrenheit, tMaxCelsius, tMaxFahrenheit, tMinCelsius, tMinFahrenheit);
@@ -377,8 +382,24 @@ $(document).ready(function() {
     return Math.round(tempK - 273.15);
   }
 
+  function calcTempMaxC(tempK) {
+    return Math.ceil(tempK - 273.15);
+  }
+
+  function calcTempMinC(tempK) {
+    return Math.floor(tempK - 273.15);
+  }
+
   function calcTempF(tempK) {
     return Math.round((tempK *9/5) - 459.67);
+  }
+
+  function calcTempMaxF(tempK) {
+    return Math.ceil((tempK *9/5) - 459.67);
+  }
+
+  function calcTempMinF(tempK) {
+    return Math.floor((tempK *9/5) - 459.67);
   }
 
 
