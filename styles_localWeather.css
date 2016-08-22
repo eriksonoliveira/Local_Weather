@@ -237,17 +237,21 @@ h1, h3 {
   display: inherit;
 }
 
-/******/
-@media only screen and (min-width: 768px) {
-  .container {
-    max-width: 770px;
-  }
-
-}
 
 footer {
-  margin-top: 40px;
   clear: both;
+  height: 50px;
+}
+
+#footerLine {
+  height: 10px;
+  background-color: #cccccc;
+  border-top: 1px solid #acacac;
+  border-bottom: 1px solid #acacac;
+}
+
+#credits {
+  margin: 10px 0;
 }
 
 /***BACKGROUNDS***/
@@ -287,10 +291,10 @@ footer {
 }
 
 
-.axis text
+.label text
 {
   font-family: 'Quicksand', 'Arial';
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .axis path,
@@ -302,4 +306,15 @@ footer {
 #graph {
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-left: 10px;
 }
+
+/******/
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 770px;
+  }
+
+}
+
+

@@ -55,7 +55,7 @@ $(document).ready(function() {
 
       /***Call openweather API for forecast data***/
       $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
-        console.log(forecWeather);
+        //console.log(forecWeather);
 
       /***calculate temp in Celsius and Fahrenheit for forecast data***/
       function tMaxCelsius(j) { return calcTempMaxC(forecWeather.list[j].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
@@ -100,8 +100,8 @@ $(document).ready(function() {
       var temps = [];
 
       for ( i = 0; i < forecWeather.list.length; i++) {
-        var maT = calcTempC(forecWeather.list[i].temp.max),
-            miT = calcTempC(forecWeather.list[i].temp.min);
+        var maT = calcTempMaxC(forecWeather.list[i].temp.max),
+            miT = calcTempMinC(forecWeather.list[i].temp.min);
         temps.push({
           max: maT,
           min: miT,
@@ -145,7 +145,7 @@ $(document).ready(function() {
       width = chartWidth + margin.left + margin.right;
       height = chartHeight + margin.top + margin.bottom;
 
-
+      //Transform temps data to the right format
       temps.forEach(function(d){
         d.day = (new Date(d.day));
         d.max = +d.max;
@@ -154,6 +154,7 @@ $(document).ready(function() {
 
       var timeFormat = d3.time.format('%a %d');
 
+      //Define x and y scales and domains
       var x = d3.time.scale()
         .range([0, chartWidth]);
 
@@ -184,7 +185,7 @@ $(document).ready(function() {
         .attr("viewBox", "0 0 " + width + " " + height)
         .attr("preserveAspectRatio", "xMinYMid meet")
         .append("g")
-        .attr("transform", "translate(20, 30)");
+        .attr("transform", "translate(30, 30)");
 
       //Draw Lines
       var line = d3.svg.line()
@@ -197,6 +198,7 @@ $(document).ready(function() {
         .x(function(d) { return x(d.day) })
         .y(function(d) { return y(d.min) });
 
+      //Max temperature
       var path = graph.append("path")
         .data([temps])
         .attr("class", "line")
@@ -204,7 +206,7 @@ $(document).ready(function() {
         .attr("stroke", "#000")
         .attr("stroke-width", 1.5)
         .attr("fill", "none");
-
+     //Min temperature
      var path2 = graph.append("path")
         .data([temps])
         .attr("class", "line")
@@ -213,6 +215,7 @@ $(document).ready(function() {
         .attr("stroke-width", 1.5)
         .attr("fill", "none");
 
+      //Make it responsive
       var totalLength = path.node().getTotalLength(),
           totalLength2 = path2.node().getTotalLength();
 
@@ -241,9 +244,18 @@ $(document).ready(function() {
         .data(function(d) { return d; })
         .enter().append("circle")
         .attr("r", 3.5)
+        .attr("stroke", "#fff")
         .attr("fill", "#000")
         .attr("cx", function(d, i) { return x(d.day); })
-        .attr("cy", function(d, i) { return y(d.max); });
+        .attr("cy", function(d, i) { return y(d.max); })
+        .on("mouseover", function(){
+            d3.select(this)
+              .attr("r", 4.5);
+          })
+        .on("mouseout", function(){
+            d3.select(this)
+              .attr("r", 3.5);
+          });
 
       graph.selectAll("dot")
         .data([temps])
@@ -253,10 +265,18 @@ $(document).ready(function() {
         .data(function(d) { return d; })
         .enter().append("circle")
         .attr("r", 3.5)
+        .attr("stroke", "#fff")
         .attr("fill", "#838383")
-        //.attr("stroke", "#08c")
         .attr("cx", function(d, i) { return x(d.day); })
-        .attr("cy", function(d, i) { return y(d.min); });
+        .attr("cy", function(d, i) { return y(d.min); })
+        .on("mouseover", function(){
+            d3.select(this)
+              .attr("r", 4.5);
+          })
+        .on("mouseout", function(){
+            d3.select(this)
+              .attr("r", 3.5);
+          });
 
       /*graph.append('g')
         .classed('labels-group', true)
@@ -300,10 +320,10 @@ $(document).ready(function() {
           .attr("y", function(d, i) { return y(d.min); })
           .attr("dx", "-.3em")
           .attr("dy", "1.2em")
-          .attr("fill", "#000")
-          .text(function(d) { return d.min; });
+          .attr("fill", "#838383")
+          .text(function(d) { return d.min ; });
 
-
+        $(".label text").append("&deg;");
 
         /*graph.selectAll("text")
           .data([temps])
