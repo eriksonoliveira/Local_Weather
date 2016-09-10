@@ -83,7 +83,7 @@ $(document).ready(function() {
         $(this).addClass(iconsList[forecIcon]);
       });
 
-      //Condition text
+      //Weather condition text
       $.each($(".condF"), function(index, value) {
         var forecDescr = forecWeather.list[index].weather[0].description;
         //Make sure description fits the space
@@ -95,8 +95,7 @@ $(document).ready(function() {
       });
 
 
-      /****Create array to store temperature and date*****/
-      /*******************************/
+      /***Create array to store temperature and date***/
       var temps = [];
 
       for ( i = 0; i < forecWeather.list.length; i++) {
