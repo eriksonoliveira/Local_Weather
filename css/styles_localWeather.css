@@ -1,0 +1,320 @@
+@import 'https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand';
+
+body * {
+  font-family: 'Quicksand', sans-serif;
+}
+
+#main {
+  height: 505px;
+}
+
+header {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  text-shadow: 1px 1px black;
+  background-color: transparent;
+  position: relative;
+  color: white;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h1, h3 {
+  text-align: center;
+}
+
+#infoBox {
+  font-size: 20px;
+  font-weight: 100;
+  color: white;
+  max-height: 18em;
+  width: 21em;
+  margin: 35px auto;
+  padding: 0px 10px;
+  z-index: 1;
+}
+
+#icon {
+  font-size: 4em;
+  text-align: center;
+  margin-left: -8px;
+  padding-bottom: 5px;
+}
+
+.temperature {
+  margin: auto 10px;
+  font-size: 5em;
+  font-weight: 500;
+  /*position: relative;
+  top: 5px;*/
+}
+
+#cityName {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+#currWeather {
+  margin-top: -10px;
+  height: 11.5em;
+
+}
+
+#tUnits {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 27px;
+  padding: 5px;
+  font-size: 1.4em;
+  position: relative;
+  right: -10px;
+}
+
+#tUnits > a {
+  display: none;
+}
+
+#tempC:hover, #tempF:hover {
+  text-decoration: none;
+}
+
+.selected {
+  color: white;
+  padding: 0px;
+  font-weight: 600;
+  font-size: 1.18em;
+  cursor: default;
+  /*color: #36a;*/
+}
+
+.unselected {
+  color: #c3c3c3;
+  text-shadow: 0px 1px #EEE;
+  cursor: pointer;
+  margin-left: 0px;
+  padding: 2px;
+  border: 1px solid rgba(06, 90, 138, 0);
+  /*color: #47b;*/
+}
+
+.selected:hover {
+  color: white;
+}
+
+.unselected:hover {
+  color: #c3c3c3;
+  border: 1px solid white;
+}
+
+.weatherCondition {
+  display: inline-block;
+  max-width: 80px;
+  position: relative;
+  top: 25px;
+
+}
+
+#condition {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-size: .8em;
+  display: block;
+}
+
+#WRU {
+  font-size: .9em;
+  font-weight: 100;
+  width: 16.5em;
+  margin: 25px auto 0 auto;
+
+}
+
+#wind {
+  float: left;
+}
+
+#wind i {
+ /*color: #36a;*/
+  font-size: 20px;
+}
+
+#line {
+  border-left: 1px solid white;
+}
+
+#RU {
+  float: right;
+}
+
+#RU i {
+  /*color: #36a;*/
+  font-size: 18px;
+
+}
+
+.iconColor {
+  color: darkblue;
+}
+
+.forecast {
+  font-size: 20px;
+}
+
+#charts {
+  margin-top: 35px;
+}
+
+.col-lg-4 {
+  margin: auto;
+}
+
+.forecHead {
+  font-size: 1.3em;
+  margin-top: 25px;
+}
+
+.forecBox {
+  width: 210px;
+  height: 190px;
+  margin: auto;
+  /*background: rgba(06, 90, 138, 1);*/
+  padding-top: 2px;
+  /*border: 4px solid rgba(255, 255, 255, 1);*/
+  /*box-shadow: 0 5px 15px #aaa;
+  color: white;*/
+  box-sizing: border-box;
+}
+
+.forecBox > p {
+  font-size: 1.1em;
+  height: 30px;
+  margin-top: 10px;
+}
+
+#today {
+  display: none;
+}
+
+.forecCondition {
+  display: inline-block;
+  max-width: 90px;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.iconF {
+  font-size: 3em;
+  text-align: center;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+}
+
+.tempForecast {
+  font-size: 1.5em;
+  display: inline-block;
+  margin-left: 15px;
+  position: relative;
+  top: -10px;
+}
+
+.tMin {
+  font-size: .7em;
+  color: #838383;
+  font-weight: 300;
+}
+
+.tMax {
+  display: block;
+}
+.condF {
+  font-size: .7em;
+  display: inherit;
+}
+
+
+footer {
+  clear: both;
+  height: 50px;
+}
+
+#footerLine {
+  height: 10px;
+  background-color: #cccccc;
+  border-top: 1px solid #acacac;
+  border-bottom: 1px solid #acacac;
+}
+
+#credits {
+  margin: 10px 0;
+}
+
+/***BACKGROUNDS***/
+/*clear*/
+/*day*/
+#main.a01d, #main.a02d {
+  background-color: #007AD6;
+  background: linear-gradient(to bottom, #007AD6, #80E6FF);
+  background: -webkit-linear-gradient(to bottom, #007AD6, #80E6FF);
+  background: -moz-linear-gradient(to bottom, #007AD6, #80E6FF);
+  background-size: cover;
+}
+/*night*/
+#main.a01n, #main.a02n {
+  background-color: #004AB9;
+  background: linear-gradient(to bottom, #00132E , #004AB9);
+  background: -webkit-linear-gradient(to bottom, #00132E , #004AB9);
+  background: -moz-linear-gradient(to bottom, #00132E , #004AB9);
+  background-size: cover;
+}
+
+/*cloudy*/
+#main.a03d, #main.a04d, #main.a09d, #main.a10d, #main.a11d, #main.a13d, #main.a50d {
+  background-color: #B9B9B9;
+  background: linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background: -webkit-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background: -moz-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background-size: cover;
+}
+
+#main.a03n, #main.a04n, #main.a09n, #main.a10n, #main.a11n, #main.a13n, #main.a50n {
+  background-color: #B9B9B9;
+  background: linear-gradient(to bottom, #2C3E50 , #C8C8C8);
+  background: -webkit-linear-gradient(to bottom, #2C3E50 , #E8E8E8);
+  background: -moz-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background-size: cover;
+}
+
+
+.label text
+{
+  font-family: 'Quicksand', 'Arial';
+  font-size: 15px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke-width: 1;
+}
+
+#graph {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+
+/******/
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 770px;
+  }
+
+}
+
+
