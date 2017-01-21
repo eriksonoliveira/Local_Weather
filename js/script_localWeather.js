@@ -47,7 +47,7 @@ $(document).ready(function() {
       //icon
       $("#icon").addClass(iconsList[weatherIcon]);
       //condition text
-      description = uppercase(description);      
+      description = uppercase(description);
       $("#condition").html(description);
       //background
       $("#main").addClass(backgroundCol);
@@ -359,7 +359,7 @@ $(document).ready(function() {
     });
 
   });
-  
+
 });
 
   //WEATHER ICONS LIST AND FUNCTIONS
