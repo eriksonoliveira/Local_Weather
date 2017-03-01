@@ -40,7 +40,7 @@
 }
 
 @media only screen and (max-width: 450px) {
-  
+
   #main {
   height: 410px;
 }
@@ -69,7 +69,7 @@
   .forecHead {
     font-size: 1.3em;
   }
-  
+
   #charts {
     margin-top: 20px;
   }
@@ -83,21 +83,21 @@
   .forecBox > p {
     font-size: 1.2em;
   }
-  
+
   .forecCondition {
     display: block;
     height: 90px;
   }
-  
+
   .tempForecast {
     margin: auto;
     margin-top: 15px;
   }
-  
+
   .iconF {
     font-size: 3em;
   }
-  
+
   .condF {
     font-size: .80em;
   }

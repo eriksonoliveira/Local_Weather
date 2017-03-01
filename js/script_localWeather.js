@@ -11,6 +11,7 @@ $(document).ready(function() {
 
   /***Call ip-api to get user's location***/
   $.getJSON("http://ip-api.com/json", function(geop) {
+    console.log(geop);
 
     var latitude = geop.lat;
     var longitude = geop.lon;
@@ -21,7 +22,7 @@ $(document).ready(function() {
 
     /***call openweathermap to get current weather information***/
     $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
-      //console.log(currWeather);
+      console.log(currWeather);
 
       /***Set the weather variables from the JSON data***/
       var tCelsius = "<span>" + calcTempC(currWeather.main.temp_max) + "</span>";
@@ -46,7 +47,7 @@ $(document).ready(function() {
       //icon
       $("#icon").addClass(iconsList[weatherIcon]);
       //condition text
-      description = uppercase(description);      
+      description = uppercase(description);
       $("#condition").html(description);
       //background
       $("#main").addClass(backgroundCol);
@@ -358,7 +359,7 @@ $(document).ready(function() {
     });
 
   });
-  
+
 });
 
   //WEATHER ICONS LIST AND FUNCTIONS
