@@ -19,7 +19,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
   </head>
 
-  <body onselectstart="return false">
+  <body>
     <div id="main" class="jumbotron">
       <header class="container">
         <h1>Your Weather Right Now</h1>
@@ -38,9 +38,8 @@
           </div>
           <br>
           <div id="WRU" >
-            <span id="wind" ></span>
-            <span id="line"></span>
-            <span id="RU"  ></span>
+            <span id="wind" class="WRU-element"></span>
+            <span id="RU" class="WRU-element"></span>
           </div>
         </div>
       </section>
@@ -94,15 +93,17 @@
       </div>
     </div>
 
-      <footer>
-        <div id="footerLine"></div>
-        <div class="text-center" id="credits">
-          <p >Developed by Erikson de Oliveira</p>
-          <p>Data from <a href="http://openweathermap.org/">OpenWeatherMap</a></p>
-        </div>
-      </footer>
+    <footer>
+      <div id="footerLine"></div>
+      <div class="text-center" id="credits">
+        <p >Developed by Erikson de Oliveira</p>
+        <p>Data from <a href="http://openweathermap.org/">OpenWeatherMap</a></p>
+      </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/chart.js"></script>
     <script src="js/script_localWeather.js"></script>
   </body>
 </html>

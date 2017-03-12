@@ -128,9 +128,13 @@ h1, h3 {
 #WRU {
   font-size: .9em;
   font-weight: 100;
-  width: 16.5em;
+  width: 300px;
   margin: 25px auto 0 auto;
+}
 
+.WRU-element{
+  width: 50%;
+  padding: 0 3px;
 }
 
 #wind {
@@ -138,21 +142,18 @@ h1, h3 {
 }
 
 #wind i {
- /*color: #36a;*/
   font-size: 20px;
-}
-
-#line {
-  border-left: 1px solid white;
+  padding: 0 4px;
 }
 
 #RU {
   float: right;
+  /*border-left: 1px solid #FFF;*/
 }
 
 #RU i {
-  /*color: #36a;*/
   font-size: 18px;
+  padding: 0 5px 0 6px;
 
 }
 
