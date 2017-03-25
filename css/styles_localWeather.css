@@ -65,12 +65,10 @@ h1, h3 {
 
 #tUnits {
   display: inline-block;
-  box-sizing: border-box;
-  width: 27px;
-  padding: 5px;
-  font-size: 1.4em;
-  position: relative;
-  right: -10px;
+  width: 35px;
+  padding: 0 5px;
+  font-size: 24px;
+  margin-left: 10px;
 }
 
 #tUnits > a {
@@ -82,7 +80,7 @@ h1, h3 {
 }
 
 .selected {
-  color: white;
+  color: #FFF;
   padding: 0px;
   font-weight: 600;
   font-size: 1.18em;
@@ -91,13 +89,13 @@ h1, h3 {
 }
 
 .unselected {
-  color: #c3c3c3;
+  color: #C3C3C3;
   text-shadow: 0px 1px #EEE;
   cursor: pointer;
   margin-left: 0px;
-  padding: 2px;
+  padding: 1px 2px;
   border: 1px solid rgba(06, 90, 138, 0);
-  /*color: #47b;*/
+/*  transition: .3s;*/
 }
 
 .selected:hover {
@@ -106,7 +104,8 @@ h1, h3 {
 
 .unselected:hover {
   color: #c3c3c3;
-  border: 1px solid white;
+  border: 1px solid #FFF;
+  background-color: #999;
 }
 
 .weatherCondition {
