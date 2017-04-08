@@ -12,7 +12,7 @@ $(document).ready(function() {
   /***Call ip-api to get user's location***/
 //  $.getJSON("http://ip-api.com/json", function(geop) {
   $.getJSON("https://ipapi.co/json/", function(geop) {
-    console.log(geop);
+    //console.log(geop);
 
     var latitude = geop.latitude;
     var longitude = geop.longitude;
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     /***call openweathermap to get current weather information***/
     $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
-      console.log(currWeather);
+      //console.log(currWeather);
 
       /***Set the weather variables from the JSON data***/
       var tCelsius = "<span>" + calcTempC(currWeather.main.temp_max) + "</span>";
