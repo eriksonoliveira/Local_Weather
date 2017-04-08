@@ -10,13 +10,14 @@ function location(position){
 $(document).ready(function() {
 
   /***Call ip-api to get user's location***/
-  $.getJSON("http://ip-api.com/json", function(geop) {
+//  $.getJSON("http://ip-api.com/json", function(geop) {
+  $.getJSON("https://ipapi.co/json/", function(geop) {
     console.log(geop);
 
-    var latitude = geop.lat;
-    var longitude = geop.lon;
+    var latitude = geop.latitude;
+    var longitude = geop.longitude;
     var city = geop.city;
-    var country = geop.countryCode;
+    var country = geop.country;
     var locationName = $("<span>" + city + ", " + country + "</span>");
     //console.log(latitude + ' ' + longitude);
 
