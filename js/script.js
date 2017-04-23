@@ -21,6 +21,12 @@ $(document).ready(function() {
     var locationName = $("<span>" + city + ", " + country + "</span>");
     //console.log(latitude + ' ' + longitude);
 
+
+    $.getJSON("https://api.wunderground.com/api/18edfb193f8ac4c6/geolookup/conditions/forecast/q/Australia/Sydney.js  on", function(weatherJson) {
+      console.log(weatherJson);
+    });
+
+
     /***call openweathermap to get current weather information***/
     $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
       //console.log(currWeather);
@@ -111,15 +117,15 @@ $(document).ready(function() {
       }
 
 
-      /***Write the days of the week into 'temps'***/
+      /***Push the days of the week into 'temps'***/
       var d = new Date();
       var week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
       $.each($(".day"), function(index, value) {
-        var gettDay = new Date(d.getTime() + 86400 * 1000 * (index));
-        //console.log(nextDay);
-        var weekDay = week[gettDay.getDay()];
-        var weekDayTime = gettDay.getTime();
+        var forecDay = new Date(d.getTime() + 86400 * 1000 * (index));
+        var weekDay = week[forecDay.getDay()];
+        var weekDayTime = forecDay.getTime();
+
         $(this).html(weekDay);
         temps[index].day = weekDayTime;
 
@@ -131,7 +137,7 @@ $(document).ready(function() {
 
         //temps[index].day = result;
 
-        //console.log(temps);
+        console.log(temps);
       });
 
         /***Draw the temperature chart***/
