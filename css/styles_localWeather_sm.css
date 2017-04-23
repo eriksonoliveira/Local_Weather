@@ -6,7 +6,13 @@
   }
 
   #main {
-    height: 410px;
+/*    height: 410px;*/
+    margin-top: 0;
+    padding: 20px 0;
+  }
+
+  header {
+    font-size: 40px;
   }
 
   .container {
@@ -42,8 +48,12 @@
 @media only screen and (max-width: 450px) {
 
   #main {
-  height: 410px;
-}
+    height: 410px;
+  }
+
+  header {
+    font-size: 35px;
+  }
 
   #infoBox {
     margin: 30px auto;

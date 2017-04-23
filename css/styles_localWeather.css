@@ -12,21 +12,18 @@ body * {
 #main {
 /*  height: 505px;*/
   margin-top: -20px;
-  padding-top: 50px;
+  padding: 50px 0;
 }
 
 header {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 28px;
+  font-size: 45px;
   font-weight: 500;
   text-shadow: 1px 1px black;
+  text-align: center;
   background-color: transparent;
   position: relative;
   color: white;
-}
-
-h1, h3 {
-  text-align: center;
 }
 
 #infoBox {
@@ -165,6 +162,7 @@ h1, h3 {
 
 .forecast {
   font-size: 20px;
+  padding-top: 35px;
 }
 
 #charts {
@@ -176,8 +174,8 @@ h1, h3 {
 }
 
 .forecHead {
-  font-size: 1.3em;
-  margin-top: 25px;
+  font-size: 1.12em;
+  text-align: center;
 }
 
 .forecBox {
