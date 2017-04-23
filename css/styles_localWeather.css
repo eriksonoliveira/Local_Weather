@@ -1,25 +1,28 @@
 @import 'https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand';
 
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 body * {
   font-family: 'Quicksand', sans-serif;
 }
 
 #main {
-  height: 505px;
+/*  height: 505px;*/
+  margin-top: -20px;
+  padding-top: 50px;
 }
 
 header {
   font-family: 'Josefin Sans', sans-serif;
+  font-size: 28px;
   font-weight: 500;
   text-shadow: 1px 1px black;
   background-color: transparent;
   position: relative;
   color: white;
-}
-
-.container {
-  margin-right: auto;
-  margin-left: auto;
 }
 
 h1, h3 {
@@ -105,7 +108,7 @@ h1, h3 {
 .unselected:hover {
   color: #c3c3c3;
   border: 1px solid #FFF;
-  background-color: #999;
+  background-color: rgba(180,180,180, .3);
 }
 
 .weatherCondition {
@@ -240,11 +243,11 @@ h1, h3 {
 
 footer {
   clear: both;
-  height: 50px;
+/*  height: 50px;*/
 }
 
 #footerLine {
-  height: 10px;
+  height: 5px;
   background-color: #cccccc;
   border-top: 1px solid #acacac;
   border-bottom: 1px solid #acacac;
@@ -252,6 +255,7 @@ footer {
 
 #credits {
   margin: 10px 0;
+  font-size: 10px;
 }
 
 /***BACKGROUNDS***/
