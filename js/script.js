@@ -1,35 +1,18 @@
-
- /*if (navigator.geolocation) {
-navigator.geolocation.getCurrentPosition(location);
-}
-
-function location(position){
-  console.log(position);
-*/
-
 $(document).ready(function() {
 
   /***Call ip-api to get user's location***/
 //  $.getJSON("http://ip-api.com/json", function(geop) {
   $.getJSON("https://ipapi.co/json/", function(geop) {
-    //console.log(geop);
 
     var latitude = geop.latitude;
     var longitude = geop.longitude;
     var city = geop.city;
     var country = geop.country;
     var locationName = $("<span>" + city + ", " + country + "</span>");
-    //console.log(latitude + ' ' + longitude);
-
-
-    $.getJSON("https://api.wunderground.com/api/18edfb193f8ac4c6/geolookup/conditions/forecast/q/Australia/Sydney.js  on", function(weatherJson) {
-      console.log(weatherJson);
-    });
 
 
     /***call openweathermap to get current weather information***/
     $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
-      //console.log(currWeather);
 
       /***Set the weather variables from the JSON data***/
       var tCelsius = "<span>" + calcTempC(currWeather.main.temp_max) + "</span>";
@@ -58,19 +41,16 @@ $(document).ready(function() {
       $("#condition").html(description);
       //background
       $("#main").addClass(backgroundCol);
-      //$("#main").addClass("a01n");
 
 
       /***Call openweather API for forecast data***/
       $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
-        //console.log(forecWeather);
 
       /***calculate temp in Celsius and Fahrenheit for forecast data***/
       function tMaxCelsius(j) { return calcTempMaxC(forecWeather.list[j].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
       function tMaxFahrenheit(k) { return calcTempMaxF(forecWeather.list[k].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
       function tMinCelsius(l) {return calcTempMinC(forecWeather.list[l].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
       function tMinFahrenheit(m) { return calcTempMinF(forecWeather.list[m].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
-      //console.log(tMinCelsius(1));
 
       /***insert forecast data on the page***/
       //High
@@ -129,15 +109,6 @@ $(document).ready(function() {
         $(this).html(weekDay);
         temps[index].day = weekDayTime;
 
-        //var date = gettDay.getMonth() + " " + gettDay.getDate() + " " + gettDay.getFullYear();
-        //var date = gettDay.toDateString();
-        //var patt = /(\w{3}) (\d{2}) (\d{4})/g;
-        //var result = date.match(patt);
-        //var a = gettDay.toJSON();
-
-        //temps[index].day = result;
-
-        console.log(temps);
       });
 
         /***Draw the temperature chart***/

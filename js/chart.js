@@ -145,22 +145,6 @@ function createTempChart(dataset){
               .attr("r", 3.5);
           });
 
-      /*graph.append('g')
-        .classed('labels-group', true)
-        .selectAll('text')
-        .data([temps])
-        .enter()
-        .append('text')
-        .classed('label', true)
-        .attr({
-          'x': function(d, i) { return x(d.day); },
-          'y': function(d, i) { return y(d.min); }
-        })
-        .text(function(d, i) {
-          return d.max;
-        });
-        */
-
 //Show temperature values with the dots
         graph.selectAll("label")
           .data([dataset])
@@ -192,28 +176,6 @@ function createTempChart(dataset){
 
         $(".label text").append("&deg;");
 
-        /*graph.selectAll("text")
-          .data([temps])
-          .enter()
-          .append("text")
-          .attr("transform", "translate("+ function(d, i) { return x(d.day); } +","+ function(d, i) { return y(d.min); } +")")
-          .attr("dy", ".35em")
-          .attr("text-anchor", "start")
-          .style("fill", "red")*/
-          /*.attr({
-          'x': function(d, i) { return x(d.day); },
-          'y': function(d, i) { return y(d.min); }
-          })*/
-          /*.text(function(d, i) {
-          return d.max;
-        }); */
-
-      /*graph.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .attr("stroke", "#000")
-        .call(xAxis);
-        */
 
 //END CHART
 }
