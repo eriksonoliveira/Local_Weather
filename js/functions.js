@@ -59,47 +59,63 @@
   }
 
 
-  //Iterate through forec days and change temp unit
-  function forecUnitSwitch(elem, getTemp){
+  /*Iterate through forec days and change temp unit
+    Receive element, forecast object and temperature method
+  */
+  function forecUnitSwitch(elem, forecWeather, getTemp){
     $.each($(elem), function(index, value) {
-      $(this).html(getTemp(index));
+      $(this).html(getTemp(index, forecWeather));
     });
   }
 
+  /***calculate temp in Celsius and Fahrenheit for forecast data***/
+  function tMaxCelsius(j, forecWeather) { return calcTempMaxC(forecWeather.list[j].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
+  function tMaxFahrenheit(k, forecWeather) { return calcTempMaxF(forecWeather.list[k].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
+  function tMinCelsius(l, forecWeather) {return calcTempMinC(forecWeather.list[l].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
+  function tMinFahrenheit(m, forecWeather) { return calcTempMinF(forecWeather.list[m].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
+
+
   //toggle between celsius and Fahrenheit
-  var unitSwitch = function(tC, tF, tMaxForecCel, tMaxForecFah, tMinForecCel, tMinForecFah){
-    //Fahrenheit
-    $('#tempF').on('click', function() {
-      if ($('#tempC').hasClass("selected")) {
+  var unitSwitch = function(forecWeather, tC, tF){
+    /******Fahrenheit******/
+    $('#tempF').unbind().on('click', function() { //unbind is used, so that the event is not
+      if ($('#tempC').hasClass("selected")) {     //fired more than once
         $("#temp, .tMax, .tMin").hide();
         //Current temp
         $('#temp').html(tF);
         //tMax forecast
-        forecUnitSwitch('.tMax', tMaxForecFah);
+        forecUnitSwitch('.tMax', forecWeather, tMaxFahrenheit);
         //tMin forecast
-        forecUnitSwitch('.tMin', tMinForecFah);
+        forecUnitSwitch('.tMin', forecWeather, tMinFahrenheit);
 
         //Change the class of the unit buttons
         $('#tempC').removeClass("selected").addClass("unselected");
         $('#tempF').removeClass("unselected").addClass("selected");
         $("#temp, .tMax, .tMin").fadeIn(500);
       }
+
+      /*Change temperatures on chart*/
+      createChart(forecWeather, calcTempMaxF, calcTempMinF);
     });
-    //Celsius
-    $('#tempC').on('click', function() {
-      if ($('#tempF').hasClass("selected")) {
+
+    /******Celsius******/
+    $('#tempC').unbind().on('click', function() { //unbind is used, so that the event is not
+      if ($('#tempF').hasClass("selected")) {     //fired more than once
         $("#temp, .tMax, .tMin").hide();
         //Current temp
         $('#temp').html(tC);
         //tMax forecast
-        forecUnitSwitch('.tMax', tMaxForecCel);
+        forecUnitSwitch('.tMax', forecWeather, tMaxCelsius);
         //tMin forecast
-        forecUnitSwitch('.tMin', tMinForecCel);
+        forecUnitSwitch('.tMin', forecWeather, tMinCelsius);
 
         //Change the class of the unit buttons
         $('#tempF').removeClass("selected").addClass("unselected");
         $('#tempC').removeClass("unselected").addClass("selected");
         $("#temp, .tMax, .tMin").fadeIn(500);
       }
+
+      /*Change temperatures on chart*/
+      createChart(forecWeather, calcTempMaxC, calcTempMinC);
     });
   }
