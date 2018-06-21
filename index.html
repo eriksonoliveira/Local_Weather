@@ -2,9 +2,10 @@
 <html>
 
   <head>
-    <title>Your Weather Right Now  - check the weather in your city</title>
+    <title>Your Weather App - check the weather in your city</title>
     <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta charset="utf-8"/>
+
     <link href="css/styles_localWeather.css" rel="stylesheet">
     <link href="css/styles_localWeather_sm.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -22,9 +23,12 @@
   <body>
     <div id="main" class="">
       <header class="container">
-        Your Weather Right Now
+        Your Weather App
       </header>
       <section id="infoBox" class="pagination-center">
+        <div class="infoBox-search">
+          <input type="text" id="city-search" class="city-search" placeholder="Search Location"/>
+        </div>
         <h3 id="cityName"></h3>
         <div id="currWeather" class="text-center">
           <div class="weatherCondition">
@@ -103,6 +107,11 @@
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
     <script src="js/functions.js"></script>
     <script src="js/chart.js"></script>
+    <script src="js/create-chart.js"></script>
+    <script src="js/insert-data.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/load-place.js"></script>
+    <!--LOAD GOOGLE MAPS API-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAapMcQH94FLAnnmlzllygPJLdkI_SXJ8U&libraries=places&callback=initialize"></script>
   </body>
 </html>
