@@ -1,7 +1,7 @@
 function insertData(latitude, longitude, locationName) {
 
   /***call openweathermap to get current weather information***/
-  $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
+  $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(currWeather) {
 
     /***Set the weather variables from the JSON data***/
     var tCelsius = "<span>" + calcTempC(currWeather.main.temp_max) + "</span>";
@@ -33,7 +33,7 @@ function insertData(latitude, longitude, locationName) {
 
 
     /***Call openweather API for forecast data***/
-    $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
+    $.get('https://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude +'&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function(forecWeather) {
 
       /***calculate temp in Celsius and Fahrenheit for forecast data***/
 //      function tMaxCelsius(j) { return calcTempMaxC(forecWeather.list[j].temp.max) + "<i class=\"wi wi-degrees\"></i>";}

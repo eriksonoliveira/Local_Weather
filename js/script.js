@@ -22,8 +22,4 @@ $(document).ready(function() {
 //    unitSwitch(metData.forecWeather, metData.tCelsius, metData.tFahrenheit);
   });
 
-
-
-//  google.maps.event.addDomListener(window, 'load', initialize);
-
 });
