@@ -1,6 +1,6 @@
-  //WEATHER ICONS LIST AND FUNCTIONS
+  /*WEATHER ICONS LIST AND FUNCTIONS*/
 
-  //list of weather iconsbackg
+  //list of weather icons
    var iconsList = {
     "01d" : "wi wi-day-sunny",
     "02d" : "wi wi-day-cloudy",
@@ -73,49 +73,3 @@
   function tMaxFahrenheit(k, forecWeather) { return calcTempMaxF(forecWeather.list[k].temp.max) + "<i class=\"wi wi-degrees\"></i>";}
   function tMinCelsius(l, forecWeather) {return calcTempMinC(forecWeather.list[l].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
   function tMinFahrenheit(m, forecWeather) { return calcTempMinF(forecWeather.list[m].temp.min) + "<i class=\"wi wi-degrees\"></i>";}
-
-
-  //toggle between celsius and Fahrenheit
-  var unitSwitch = function(forecWeather, tC, tF){
-    /******Fahrenheit******/
-    $('#tempF').unbind().on('click', function() { //unbind is used, so that the event is not
-      if ($('#tempC').hasClass("selected")) {     //fired more than once
-        $("#temp, .tMax, .tMin").hide();
-        //Current temp
-        $('#temp').html(tF);
-        //tMax forecast
-        forecUnitSwitch('.tMax', forecWeather, tMaxFahrenheit);
-        //tMin forecast
-        forecUnitSwitch('.tMin', forecWeather, tMinFahrenheit);
-
-        //Change the class of the unit buttons
-        $('#tempC').removeClass("selected").addClass("unselected");
-        $('#tempF').removeClass("unselected").addClass("selected");
-        $("#temp, .tMax, .tMin").fadeIn(500);
-      }
-
-      /*Change temperatures on chart*/
-      createChart(forecWeather, calcTempMaxF, calcTempMinF);
-    });
-
-    /******Celsius******/
-    $('#tempC').unbind().on('click', function() { //unbind is used, so that the event is not
-      if ($('#tempF').hasClass("selected")) {     //fired more than once
-        $("#temp, .tMax, .tMin").hide();
-        //Current temp
-        $('#temp').html(tC);
-        //tMax forecast
-        forecUnitSwitch('.tMax', forecWeather, tMaxCelsius);
-        //tMin forecast
-        forecUnitSwitch('.tMin', forecWeather, tMinCelsius);
-
-        //Change the class of the unit buttons
-        $('#tempF').removeClass("selected").addClass("unselected");
-        $('#tempC').removeClass("unselected").addClass("selected");
-        $("#temp, .tMax, .tMin").fadeIn(500);
-      }
-
-      /*Change temperatures on chart*/
-      createChart(forecWeather, calcTempMaxC, calcTempMinC);
-    });
-  }

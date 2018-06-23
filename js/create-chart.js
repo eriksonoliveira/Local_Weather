@@ -1,3 +1,5 @@
+/*PREPARE DATA AND CREATE CHART*/
+
 function createChart(forecWeather, calcMaxTemp, calcMinTemp) {
   /*Clean chart area*/
   $("#graph").empty();
@@ -5,9 +7,9 @@ function createChart(forecWeather, calcMaxTemp, calcMinTemp) {
   /***Create array to store temperature and date***/
   var temps = [];
 
-  for ( i = 0; i < forecWeather.list.length; i++) {
+  for (i = 0; i < forecWeather.list.length; i++) {
     var maT = calcMaxTemp(forecWeather.list[i].temp.max),
-        miT = calcMinTemp(forecWeather.list[i].temp.min);
+      miT = calcMinTemp(forecWeather.list[i].temp.min);
     temps.push({
       max: maT,
       min: miT,
@@ -18,9 +20,9 @@ function createChart(forecWeather, calcMaxTemp, calcMinTemp) {
 
   /***Push the days of the week into 'temps' array***/
   var d = new Date();
-  var week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  $.each($(".day"), function(index, value) {
+  $.each($(".day"), function (index, value) {
     var forecDay = new Date(d.getTime() + 86400 * 1000 * (index));
     var weekDay = week[forecDay.getDay()];
     var weekDayTime = forecDay.getTime();
@@ -30,6 +32,6 @@ function createChart(forecWeather, calcMaxTemp, calcMinTemp) {
 
   });
 
-    /***Draw the temperature chart***/
-    createTempChart(temps);
+  /***Draw the temperature chart***/
+  createTempChart(temps);
 }

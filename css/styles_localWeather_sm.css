@@ -6,7 +6,6 @@
   }
 
   #main {
-/*    height: 410px;*/
     margin-top: 0;
     padding: 20px 0;
   }
@@ -23,7 +22,7 @@
     font-size: 18px;
   }
 
-    .forecBox {
+  .forecBox {
     width: 90%;
     height: 250px;
   }
@@ -68,13 +67,9 @@
     width: 240px;
   }
 
-  #wind {
-    /*margin-left: -35px;*/
-  }
+  #wind {}
 
-  #RU {
-    /*margin-right: 20px;*/
-  }
+  #RU {}
 
   .forecast {
     font-size: 15px;
@@ -125,10 +120,8 @@
     margin-bottom: 0px;
   }
 
-    .label text
-  {
+  .label text {
     font-size: 20px;
   }
 
 }
-
