@@ -21,18 +21,18 @@
   </head>
 
   <body>
-    <div id="main" class="">
+    <div id="app">
       <header class="container">
         Your Weather App
       </header>
       <section id="infoBox" class="pagination-center">
         <div class="infoBox-search">
-          <input type="text" id="city-search" class="city-search" placeholder="Search Location"/>
+          <input type="text" id="location-search" class="location-search" placeholder="Search Location"/>
         </div>
         <h3 id="cityName"></h3>
         <div id="currWeather" class="text-center">
           <div class="weatherCondition">
-            <i id="icon" class=""></i>
+            <span class="icon" class=""></span>
             <span id="condition"></span>
           </div>
           <span class="temperature text-center"><span id="temp"></span><i class="degrees"></i></span>
@@ -61,7 +61,7 @@
             <p class="day"></p>
             <div class="forec">
               <div id ="F0" class="forecCondition">
-                <i class="iconF"></i>
+                <span class="iconF"></span>
                 <span class="condF"></span>
               </div>
               <div class="tempForecast"><span class="tMax"></span><span class="tMin"><i class="degrees"></i></span></div>
@@ -73,7 +73,7 @@
             <p  class="day"></p>
             <div class="forec">
               <div id ="F1" class="forecCondition">
-                <i class="iconF"></i>
+                <span class="iconF"></span>
                 <span class="condF"></span>
               </div>
               <div class="tempForecast"><span class="tMax"></span><span class="tMin"><i class="degrees"></i></span></div>
@@ -85,7 +85,7 @@
             <p class="day"></p>
             <div class="forec">
               <div id ="F2" class="forecCondition">
-                <i class="iconF"></i>
+                <span class="iconF"></span>
                 <span class="condF"></span>
               </div>
               <div class="tempForecast"><span class="tMax"></span><span class="tMin"><i class="degrees"></i></span></div>
@@ -105,7 +105,7 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-    <script src="js/functions.js"></script>
+    <script src="js/helpers.js"></script>
     <script src="js/chart.js"></script>
     <script src="js/create-chart.js"></script>
     <script src="js/insert-data.js"></script>

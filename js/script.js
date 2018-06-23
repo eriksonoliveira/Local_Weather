@@ -1,10 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 
   /***Call ip-api to get user's location***/
-//  $.getJSON("http://ip-api.com/json", function(geop) {
-  $.getJSON("https://ipapi.co/json/", function(geop) {
-  var latitude,
+  $.getJSON("https://ipapi.co/json/", function (geop) {
+    var latitude,
       longitude,
       city,
       country,
@@ -19,7 +18,6 @@ $(document).ready(function() {
 
     /*Get weather data and add it to the page*/
     insertData(latitude, longitude, locationName);
-//    unitSwitch(metData.forecWeather, metData.tCelsius, metData.tFahrenheit);
   });
 
 });

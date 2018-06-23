@@ -1,6 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand';
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
 }
@@ -9,8 +10,7 @@ body * {
   font-family: 'Quicksand', sans-serif;
 }
 
-#main {
-/*  height: 505px;*/
+#app {
   margin-top: -20px;
   padding: 50px 0;
 }
@@ -37,14 +37,14 @@ header {
   z-index: 1;
 }
 
-#icon {
+.icon {
   font-size: 4em;
   text-align: center;
   margin-left: -8px;
   padding-bottom: 5px;
 }
 
-.city-search {
+.location-search {
   width: 25rem;
   font-size: 1.5rem;
   padding: 5px 0px 5px 7px;
@@ -57,22 +57,22 @@ header {
 }
 
 ::placeholder {
-  color: rgb(200, 200, 200) !important;
+  color: rgb(180, 180, 180) !important;
   opacity: 1 !important;
 }
 
 ::-moz-placeholder {
-  color: rgb(200, 200, 200) !important;
+  color: rgb(180, 180, 180) !important;
   opacity: 1 !important;
 }
 
 :-moz-placeholder {
-  color: rgb(200, 200, 200) !important;
+  color: rgb(180, 180, 180) !important;
   opacity: 1 !important;
 }
 
 :-ms-input-placeholder {
-  color: rgb(200, 200, 200) !important;
+  color: rgb(180, 180, 180) !important;
 }
 
 ::-ms-input-placeholder {
@@ -108,7 +108,8 @@ header {
   display: none;
 }
 
-#tempC:hover, #tempF:hover {
+#tempC:hover,
+#tempF:hover {
   text-decoration: none;
 }
 
@@ -118,7 +119,6 @@ header {
   font-weight: 600;
   font-size: 1.18em;
   cursor: default;
-  /*color: #36a;*/
 }
 
 .unselected {
@@ -128,7 +128,6 @@ header {
   margin-left: 0px;
   padding: 1px 2px;
   border: 1px solid rgba(06, 90, 138, 0);
-/*  transition: .3s;*/
 }
 
 .selected:hover {
@@ -138,7 +137,7 @@ header {
 .unselected:hover {
   color: #c3c3c3;
   border: 1px solid #FFF;
-  background-color: rgba(180,180,180, .3);
+  background-color: rgba(180, 180, 180, .3);
 }
 
 .weatherCondition {
@@ -164,7 +163,7 @@ header {
   margin: 25px auto 0 auto;
 }
 
-.WRU-element{
+.WRU-element {
   width: 50%;
   padding: 0 3px;
 }
@@ -180,7 +179,6 @@ header {
 
 #RU {
   float: right;
-  /*border-left: 1px solid #FFF;*/
 }
 
 #RU i {
@@ -215,11 +213,7 @@ header {
   width: 210px;
   height: 190px;
   margin: auto;
-  /*background: rgba(06, 90, 138, 1);*/
   padding-top: 2px;
-  /*border: 4px solid rgba(255, 255, 255, 1);*/
-  /*box-shadow: 0 5px 15px #aaa;
-  color: white;*/
   box-sizing: border-box;
 }
 
@@ -227,10 +221,6 @@ header {
   font-size: 1.1em;
   height: 30px;
   margin-top: 10px;
-}
-
-#today {
-  display: none;
 }
 
 .forecCondition {
@@ -244,9 +234,7 @@ header {
   font-size: 3em;
   text-align: center;
   margin-left: 5px;
-  margin-bottom: 5px;
   box-sizing: border-box;
-  padding-bottom: 10px;
 }
 
 .tempForecast {
@@ -266,6 +254,7 @@ header {
 .tMax {
   display: block;
 }
+
 .condF {
   font-size: .7em;
   display: inherit;
@@ -274,7 +263,6 @@ header {
 
 footer {
   clear: both;
-/*  height: 50px;*/
 }
 
 #footerLine {
@@ -290,44 +278,63 @@ footer {
 }
 
 /***BACKGROUNDS***/
+
 /*clear*/
+
 /*day*/
-#main.a01d, #main.a02d {
+
+#app.a01d,
+#app.a02d {
   background-color: #007AD6;
   background: linear-gradient(to bottom, #007AD6, #80E6FF);
   background: -webkit-linear-gradient(to bottom, #007AD6, #80E6FF);
   background: -moz-linear-gradient(to bottom, #007AD6, #80E6FF);
   background-size: cover;
 }
+
 /*night*/
-#main.a01n, #main.a02n {
+
+#app.a01n,
+#app.a02n {
   background-color: #004AB9;
-  background: linear-gradient(to bottom, #00132E , #004AB9);
-  background: -webkit-linear-gradient(to bottom, #00132E , #004AB9);
-  background: -moz-linear-gradient(to bottom, #00132E , #004AB9);
+  background: linear-gradient(to bottom, #00132E, #004AB9);
+  background: -webkit-linear-gradient(to bottom, #00132E, #004AB9);
+  background: -moz-linear-gradient(to bottom, #00132E, #004AB9);
   background-size: cover;
 }
 
 /*cloudy*/
-#main.a03d, #main.a04d, #main.a09d, #main.a10d, #main.a11d, #main.a13d, #main.a50d {
+
+#app.a03d,
+#app.a04d,
+#app.a09d,
+#app.a10d,
+#app.a11d,
+#app.a13d,
+#app.a50d {
   background-color: #B9B9B9;
-  background: linear-gradient(to bottom, #2C3E50 , #B9B9B9);
-  background: -webkit-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
-  background: -moz-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background: linear-gradient(to bottom, #2C3E50, #B9B9B9);
+  background: -webkit-linear-gradient(to bottom, #2C3E50, #B9B9B9);
+  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
   background-size: cover;
 }
 
-#main.a03n, #main.a04n, #main.a09n, #main.a10n, #main.a11n, #main.a13n, #main.a50n {
+#app.a03n,
+#app.a04n,
+#app.a09n,
+#app.a10n,
+#app.a11n,
+#app.a13n,
+#app.a50n {
   background-color: #B9B9B9;
-  background: linear-gradient(to bottom, #2C3E50 , #C8C8C8);
-  background: -webkit-linear-gradient(to bottom, #2C3E50 , #E8E8E8);
-  background: -moz-linear-gradient(to bottom, #2C3E50 , #B9B9B9);
+  background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
+  background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
+  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
   background-size: cover;
 }
 
 
-.label text
-{
+.label text {
   font-family: 'Quicksand', 'Arial';
   font-size: 15px;
 }
@@ -345,6 +352,7 @@ footer {
 }
 
 /******/
+
 @media only screen and (min-width: 768px) {
   .container {
     max-width: 770px;

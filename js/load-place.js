@@ -3,11 +3,13 @@ function initialize() {
       lng,
       locationName;
 
-  var input = document.getElementById('city-search');
+  var input = document.getElementById('location-search');
   new google.maps.places.Autocomplete(input);
 
+  /*Create new instance of Autocomplete*/
   var autocomplete = new google.maps.places.Autocomplete(input);
 
+  /*Get location when the user types*/
   autocomplete.addListener('place_changed', function() {
 
     var place = autocomplete.getPlace();
@@ -18,11 +20,13 @@ function initialize() {
       return;
     }
 
+    console.log(place);
+
     lat = place.geometry.location.lat();
     lng = place.geometry.location.lng();
     locationName = place.formatted_address;
 
-    console.log(locationName);
+    /*Update UI with new data*/
     insertData(lat, lng, locationName);
   });
 }
