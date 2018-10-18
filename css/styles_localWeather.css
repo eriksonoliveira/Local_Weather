@@ -4,6 +4,8 @@ body,
 html {
   margin: 0;
   padding: 0;
+  color: #FFF !important;
+  min-height: 100vh;
 }
 
 body * {
@@ -24,14 +26,12 @@ header {
   text-align: center;
   background-color: transparent;
   position: relative;
-  color: white;
 }
 
 #infoBox {
   font-size: 20px;
   font-weight: 100;
   color: white;
-  max-height: 18em;
   width: 21em;
   margin: 35px auto;
   padding: 0px 10px;
@@ -49,8 +49,9 @@ header {
   width: 25rem;
   font-size: 1.5rem;
   padding: 5px 0px 5px 7px;
-  background-color: rgba(150, 150, 150, .2);
-  border: 0;
+  background-color: rgba(20, 20, 20, .2);
+  border: 1px solid #FFF;
+  ;
 }
 
 .infoBox-search {
@@ -58,51 +59,65 @@ header {
 }
 
 ::placeholder {
-  color: rgb(180, 180, 180) !important;
+  color: rgb(220, 220, 220) !important;
   opacity: 1 !important;
 }
 
 ::-moz-placeholder {
-  color: rgb(180, 180, 180) !important;
+  color: rgb(220, 220, 220) !important;
   opacity: 1 !important;
 }
 
 :-moz-placeholder {
-  color: rgb(180, 180, 180) !important;
+  color: rgb(220, 220, 220) !important;
   opacity: 1 !important;
 }
 
 :-ms-input-placeholder {
-  color: rgb(180, 180, 180) !important;
+  color: rgb(220, 220, 220) !important;
 }
 
 ::-ms-input-placeholder {
-  color: rgb(200, 200, 200) !important;
+  color: rgb(220, 220, 220) !important;
 }
 
 .temperature {
-  margin: auto 10px;
+  display: block;
+  /*    margin: auto;*/
   font-size: 5em;
-  font-weight: 500;
+  font-weight: lighter;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-#cityName {
+.location {
   text-align: center;
   font-size: 1.3em;
+  margin-bottom: 3rem;
 }
 
 #currWeather {
-  margin-top: -10px;
-  height: 11.5em;
+  margin: auto;
+  width: 18.5em;
+  height: 18.5em;
+  border-radius: 50%;
+  background: linear-gradient(rgba(224, 224, 224, 0.4), rgba(0, 0, 0, 0.1));
+  position: relative;
+}
 
+.currWeather-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #tUnits {
   display: inline-block;
   width: 35px;
-  padding: 0 5px;
-  font-size: 24px;
-  margin-left: 10px;
+  padding: 0 8px;
+  font-size: 2rem;
 }
 
 #tUnits > a {
@@ -117,8 +132,8 @@ header {
 .selected {
   color: #FFF;
   padding: 0px;
-  font-weight: 600;
-  font-size: 1.18em;
+  font-weight: bold;
+  font-size: 2.4rem;
   cursor: default;
 }
 
@@ -144,17 +159,11 @@ header {
 .weatherCondition {
   display: inline-block;
   max-width: 80px;
-  position: relative;
-  top: 25px;
-
 }
 
 #condition {
   display: block;
-  text-align: center;
-  margin-top: 10px;
-  font-size: .8em;
-  display: block;
+  font-size: 1em;
 }
 
 #WRU {
@@ -193,8 +202,12 @@ header {
 }
 
 .forecast {
+  /*  margin-top: 4rem;*/
   font-size: 20px;
-  padding-top: 35px;
+  padding: 35px 0;
+  background: linear-gradient(rgba(112, 112, 112, 0.4), rgba(0, 0, 0, 0.4));
+  position: relative;
+  bottom: 0;
 }
 
 #charts {
@@ -248,7 +261,7 @@ header {
 
 .tMin {
   font-size: .7em;
-  color: #838383;
+  /*  color: #838383;*/
   font-weight: 300;
 }
 
@@ -284,53 +297,107 @@ footer {
 
 /*day*/
 
-#app.a01d,
-#app.a02d {
-  background-color: #007AD6;
+.a01d,
+.a02d {
+  /*  background-color: #007AD6;*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url('../img/sunny.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /*
   background: linear-gradient(to bottom, #007AD6, #80E6FF);
   background: -webkit-linear-gradient(to bottom, #007AD6, #80E6FF);
   background: -moz-linear-gradient(to bottom, #007AD6, #80E6FF);
+*/
   background-size: cover;
 }
 
 /*night*/
 
-#app.a01n,
-#app.a02n {
-  background-color: #004AB9;
-  background: linear-gradient(to bottom, #00132E, #004AB9);
-  background: -webkit-linear-gradient(to bottom, #00132E, #004AB9);
-  background: -moz-linear-gradient(to bottom, #00132E, #004AB9);
+.a01n,
+.a02n {
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/night-clear.jpg');
   background-size: cover;
 }
 
 /*cloudy*/
 
-#app.a03d,
-#app.a04d,
-#app.a09d,
-#app.a10d,
-#app.a11d,
-#app.a13d,
-#app.a50d {
-  background-color: #B9B9B9;
+/*Test background on body element*/
+.a03d,
+.a04d,
+.a03n,
+.a04n {
+  /*  background-color: #B9B9B9;*/
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/cloudy.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  /*
   background: linear-gradient(to bottom, #2C3E50, #B9B9B9);
   background: -webkit-linear-gradient(to bottom, #2C3E50, #B9B9B9);
   background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
+*/
   background-size: cover;
 }
 
-#app.a03n,
-#app.a04n,
-#app.a09n,
-#app.a10n,
-#app.a11n,
-#app.a13n,
-#app.a50n {
+.a11d,
+.a11n {
+  /*
   background-color: #B9B9B9;
   background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
   background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
   background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
+*/
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/thunderstorm.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*Rain, Showers*/
+.a09n,
+.a10n,
+.a09d,
+.a10d {
+  /*
+  background-color: #B9B9B9;
+  background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
+  background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
+  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
+*/
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4)), url("../img/rain.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*Fog*/
+.a50d,
+.a50n {
+  /*
+  background-color: #B9B9B9;
+  background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
+  background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
+  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
+*/
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/fog.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*Snow*/
+.a13d,
+.a13n {
+  /*
+  background-color: #B9B9B9;
+  background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
+  background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
+  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
+*/
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/snow.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
