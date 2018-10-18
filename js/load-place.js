@@ -1,7 +1,7 @@
 function initialize() {
   var lat,
-      lng,
-      locationName;
+    lng,
+    locationName;
 
   var input = document.getElementById('location-search');
   new google.maps.places.Autocomplete(input);
@@ -10,7 +10,7 @@ function initialize() {
   var autocomplete = new google.maps.places.Autocomplete(input);
 
   /*Get location when the user types*/
-  autocomplete.addListener('place_changed', function() {
+  autocomplete.addListener('place_changed', function () {
 
     var place = autocomplete.getPlace();
     if (!place.geometry) {
@@ -20,7 +20,7 @@ function initialize() {
       return;
     }
 
-    console.log(place);
+    //    console.log(place);
 
     lat = place.geometry.location.lat();
     lng = place.geometry.location.lng();

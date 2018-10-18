@@ -1,8 +1,17 @@
 /* for small screens */
 
 @media only screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+
+  #app {
+    margin-top: 0;
+    padding: 0 0 2rem 0;
+  }
+
   #infoBox {
-    font-size: 18px;
+    font-size: 1.5rem;
   }
 
   #main {
@@ -10,16 +19,14 @@
     padding: 20px 0;
   }
 
-  header {
-    font-size: 40px;
-  }
-
   .container {
     max-width: 570px;
   }
 
   .forecast {
-    font-size: 18px;
+    font-size: 1.2rem;
+    margin-top: 0;
+    padding-top: 1.5rem;
   }
 
   .forecBox {
@@ -29,7 +36,7 @@
 
   .forecCondition {
     display: block;
-    height: 90px;
+    height: 6rem;
   }
 
   .tempForecast {
@@ -45,18 +52,17 @@
 }
 
 @media only screen and (max-width: 450px) {
+  html {
+    font-size: 10px;
+  }
 
   #main {
     height: 410px;
   }
 
-  header {
-    font-size: 35px;
-  }
-
   #infoBox {
     margin: 30px auto;
-    font-size: 15px;
+    font-size: 1.3rem;
   }
 
   #icon {
@@ -72,15 +78,24 @@
   #RU {}
 
   .forecast {
-    font-size: 15px;
+    font-size: 1.3rem;
+    height: 220px;
+  }
+
+  .forecast .container {
+    max-height: 220px;
   }
 
   .forecHead {
-    font-size: 1.3em;
+    font-size: 1.8rem;
   }
 
   #charts {
-    margin-top: 20px;
+    margin-top: 1rem;
+  }
+
+  #charts * {
+    max-height: 160px;
   }
 
   .forecBox {
@@ -91,11 +106,13 @@
 
   .forecBox > p {
     font-size: 1.2em;
+    margin: 0;
   }
 
   .forecCondition {
     display: block;
-    height: 90px;
+    height: 5em;
+    margin: 0;
   }
 
   .tempForecast {
@@ -104,11 +121,11 @@
   }
 
   .iconF {
-    font-size: 3em;
+    font-size: 2em;
   }
 
   .condF {
-    font-size: .80em;
+    font-size: 1em;
   }
 
   .weatherCondition {

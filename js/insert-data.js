@@ -21,17 +21,17 @@ function insertData(latitude, longitude, locationName) {
     $('#temp').html(tCelsius);
     $('.degrees').addClass("wi wi-degrees");
     $('#tUnits > a').show();
-    $('#wind').html("Wind <i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
-    $('#RU').html("<i class=\"wi wi-humidity\"></i>" + "  " + " Humidity " + humidity + "%");
+    $('#wind').html("<i class=\"wi wi-wind from-" + winddir + "-deg\"></i>  " + windsp + " m/s");
+    $('#RU').html("<i class=\"wi wi-humidity\"></i>" + "  " + humidity + "%");
 
     /***add weather icon and description to the page and change backgound***/
     //icon
-    $('.icon').html("<span class='" + iconsList[weatherIcon] + "'></span>");
+    //    $('.icon').html("<span class='" + iconsList[weatherIcon] + "'></span>");
     //condition text
     description = uppercase(description);
     $('#condition').html(description);
     //background
-    $('#app').removeClass().addClass(backgroundCol);
+    $('body').removeClass().addClass(backgroundCol);
 
 
     /***Call openweather API for forecast data***/
