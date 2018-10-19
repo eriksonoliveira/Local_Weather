@@ -48,10 +48,28 @@ header {
 .location-search {
   width: 25rem;
   font-size: 1.5rem;
-  padding: 5px 0px 5px 7px;
+  padding: 5px 25px 5px 7px;
   background-color: rgba(20, 20, 20, .2);
   border: 1px solid #FFF;
-  ;
+}
+
+.location-search-reset {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-52%);
+  background-color: transparent;
+  border: 0;
+  font-size: 1.5rem;
+  display: none;
+}
+
+.location-search::-ms-clear {
+  display: none;
+}
+
+.location-search:focus:valid ~ .location-search-reset {
+  display: block;
 }
 
 .infoBox-search {
@@ -83,9 +101,7 @@ header {
 
 .temperature {
   display: block;
-  /*    margin: auto;*/
   font-size: 5em;
-  font-weight: lighter;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -115,8 +131,8 @@ header {
 
 #tUnits {
   display: inline-block;
-  width: 35px;
-  padding: 0 8px;
+  width: 30px;
+  padding: 0 0px;
   font-size: 2rem;
 }
 
@@ -133,7 +149,7 @@ header {
   color: #FFF;
   padding: 0px;
   font-weight: bold;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   cursor: default;
 }
 
@@ -141,41 +157,31 @@ header {
   color: #C3C3C3;
   text-shadow: 0px 1px #EEE;
   cursor: pointer;
-  margin-left: 0px;
-  padding: 1px 2px;
+  padding: 2px 6px;
   border: 1px solid rgba(06, 90, 138, 0);
 }
 
-.selected:hover {
-  color: white;
-}
-
 .unselected:hover {
-  color: #c3c3c3;
   border: 1px solid #FFF;
   background-color: rgba(180, 180, 180, .3);
 }
 
 .weatherCondition {
-  display: inline-block;
-  max-width: 80px;
+  display: block;
 }
 
 #condition {
-  display: block;
   font-size: 1em;
 }
 
 #WRU {
-  font-size: .9em;
-  font-weight: 100;
-  width: 300px;
-  margin: 25px auto 0 auto;
+  font-size: 1em;
+  width: 280px;
+  margin: auto;
 }
 
 .WRU-element {
   width: 50%;
-  padding: 0 3px;
 }
 
 #wind {
@@ -193,7 +199,7 @@ header {
 
 #RU i {
   font-size: 18px;
-  padding: 0 5px 0 6px;
+  padding: 0 5px;
 
 }
 
@@ -202,8 +208,7 @@ header {
 }
 
 .forecast {
-  /*  margin-top: 4rem;*/
-  font-size: 20px;
+  font-size: 18px;
   padding: 35px 0;
   background: linear-gradient(rgba(112, 112, 112, 0.4), rgba(0, 0, 0, 0.4));
   position: relative;
@@ -233,15 +238,13 @@ header {
 
 .forecBox > p {
   font-size: 1.1em;
-  height: 30px;
-  margin-top: 10px;
 }
 
 .forecCondition {
   display: inline-block;
   max-width: 90px;
   margin: auto;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .iconF {
@@ -252,7 +255,7 @@ header {
 }
 
 .tempForecast {
-  font-size: 1.5em;
+  font-size: 1.6em;
   display: inline-block;
   margin-left: 15px;
   position: relative;
@@ -261,12 +264,13 @@ header {
 
 .tMin {
   font-size: .7em;
-  /*  color: #838383;*/
-  font-weight: 300;
+  /*  color: #5383C3;*/
+  color: #C3C3C3;
 }
 
 .tMax {
   display: block;
+  /*  color: #C36053;*/
 }
 
 .condF {
@@ -296,7 +300,6 @@ footer {
 /*clear*/
 
 /*day*/
-
 .a01d,
 .a02d {
   /*  background-color: #007AD6;*/
@@ -304,16 +307,10 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /*
-  background: linear-gradient(to bottom, #007AD6, #80E6FF);
-  background: -webkit-linear-gradient(to bottom, #007AD6, #80E6FF);
-  background: -moz-linear-gradient(to bottom, #007AD6, #80E6FF);
-*/
   background-size: cover;
 }
 
 /*night*/
-
 .a01n,
 .a02n {
 
@@ -322,8 +319,6 @@ footer {
 }
 
 /*cloudy*/
-
-/*Test background on body element*/
 .a03d,
 .a04d,
 .a03n,
@@ -332,22 +327,12 @@ footer {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/cloudy.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  /*
-  background: linear-gradient(to bottom, #2C3E50, #B9B9B9);
-  background: -webkit-linear-gradient(to bottom, #2C3E50, #B9B9B9);
-  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
-*/
   background-size: cover;
 }
 
+/*thunderstorm*/
 .a11d,
 .a11n {
-  /*
-  background-color: #B9B9B9;
-  background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
-  background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
-  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
-*/
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/thunderstorm.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -359,12 +344,6 @@ footer {
 .a10n,
 .a09d,
 .a10d {
-  /*
-  background-color: #B9B9B9;
-  background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
-  background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
-  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
-*/
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4)), url("../img/rain.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -374,12 +353,6 @@ footer {
 /*Fog*/
 .a50d,
 .a50n {
-  /*
-  background-color: #B9B9B9;
-  background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
-  background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
-  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
-*/
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/fog.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -389,12 +362,6 @@ footer {
 /*Snow*/
 .a13d,
 .a13n {
-  /*
-  background-color: #B9B9B9;
-  background: linear-gradient(to bottom, #2C3E50, #C8C8C8);
-  background: -webkit-linear-gradient(to bottom, #2C3E50, #E8E8E8);
-  background: -moz-linear-gradient(to bottom, #2C3E50, #B9B9B9);
-*/
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/snow.jpg");
   background-position: center;
   background-repeat: no-repeat;
