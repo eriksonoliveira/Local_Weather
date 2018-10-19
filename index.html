@@ -25,7 +25,10 @@
   <div id="app">
     <section id="infoBox" class="pagination-center">
       <div class="infoBox-search">
-        <input type="text" id="location-search" class="location-search" placeholder="Search Location" />
+        <form style="display: inline-block; position: relative">
+          <input type="text" id="location-search" class="location-search" placeholder="Search Location" />
+          <button type="reset" class="location-search-reset">x</button>
+        </form>
       </div>
       <h3 class="location">
         <span><i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -105,8 +108,8 @@
 
   <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
   <script src="js/helpers.js"></script>
-  <script src="js/chart.js"></script>
-  <script src="js/create-chart.js"></script>
+  <!--  <script src="js/chart.js"></script>-->
+  <!--  <script src="js/create-chart.js"></script>-->
   <script src="js/insert-data.js"></script>
   <script src="js/script.js"></script>
   <script src="js/load-place.js"></script>

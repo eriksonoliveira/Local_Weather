@@ -2,7 +2,7 @@
 
 @media only screen and (max-width: 768px) {
   html {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   #app {
@@ -12,6 +12,10 @@
 
   #infoBox {
     font-size: 1.5rem;
+  }
+
+  #WRU {
+    width: 220px;
   }
 
   #main {
@@ -24,7 +28,7 @@
   }
 
   .forecast {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-top: 0;
     padding-top: 1.5rem;
   }
@@ -39,9 +43,14 @@
     height: 6rem;
   }
 
+  .condF {
+    font-size: 1em;
+  }
+
+
   .tempForecast {
     margin: auto;
-    margin-top: 15px;
+    margin-top: 45px;
   }
 
   #graph {
@@ -70,12 +79,8 @@
   }
 
   #WRU {
-    width: 240px;
+    width: 200px;
   }
-
-  #wind {}
-
-  #RU {}
 
   .forecast {
     font-size: 1.3rem;
