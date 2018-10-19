@@ -2,6 +2,7 @@
 
 function insertData(latitude, longitude, locationName) {
 
+
   /***call openweathermap to get current weather information***/
   $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function (currWeather) {
 
@@ -36,6 +37,8 @@ function insertData(latitude, longitude, locationName) {
 
     /***Call openweather API for forecast data***/
     $.get('https://api.openweathermap.org/data/2.5/forecast/daily?lat=' + latitude + '&lon=' + longitude + '&cnt=3&APPID=9ad8257fe3d7737f364b3b1ea8e7cc53', function (forecWeather) {
+      /*Reset unit to Celsius*/
+      toggleTempUnit('C', tCelsius, tFahrenheit, forecWeather);
 
       /***insert forecast data on the page***/
       //High
@@ -66,54 +69,36 @@ function insertData(latitude, longitude, locationName) {
         $(this).html(forecDescr);
       });
 
+      /*Insert weekdays*/
+      $.each($(".day"), function (index, value) {
+        var day = getWeekdays(index);
+
+        $(this).html(day.weekday);
+      });
+
       /*Create temp chart*/
-      createChart(forecWeather, calcTempMaxC, calcTempMinC);
+      //      createChart(forecWeather, calcTempMaxC, calcTempMinC);
 
 
       //toggle between celsius and Fahrenheit
       /******Fahrenheit******/
-      $('#tempF').off('click').on('click', function () { //unbind is used, so that the event is not
-        if ($('#tempC').hasClass("selected")) { //fired more than once
-          $("#temp, .tMax, .tMin").hide();
-          //Current temp
-          $('#temp').html(tFahrenheit);
-          //            $('#temp').html(tF);
-          //Change tMax forecast to fahrenheit
-          forecUnitSwitch('.tMax', forecWeather, tMaxFahrenheit);
-          //Change Min forecast to fahrenheit
-          forecUnitSwitch('.tMin', forecWeather, tMinFahrenheit);
-
-          //Change the class of the unit buttons
-          $('#tempC').removeClass("selected").addClass("unselected");
-          $('#tempF').removeClass("unselected").addClass("selected");
-          $("#temp, .tMax, .tMin").fadeIn(500);
-        }
-
-        /*Change temperatures on chart*/
-        createChart(forecWeather, calcTempMaxF, calcTempMinF);
+      //unbind is used, so that the event is not fired more than once
+      $('#tempF').off('click').on('click', function () {
+        toggleTempUnit('F', tCelsius, tFahrenheit, forecWeather)
       });
+
+      /*Change temperatures on chart*/
+      //        createChart(forecWeather, calcTempMaxF, calcTempMinF);
+      //      });
 
       /******Celsius******/
-      $('#tempC').off('click').on('click', function () { //unbind is used, so that the event is not
-        if ($('#tempF').hasClass("selected")) { //fired more than once
-          $("#temp, .tMax, .tMin").hide();
-          //Current temp
-          $('#temp').html(tCelsius);
-          //            $('#temp').html(tC);
-          //Change tMax forecast to celsius
-          forecUnitSwitch('.tMax', forecWeather, tMaxCelsius);
-          //Change tMin forecast to celsius
-          forecUnitSwitch('.tMin', forecWeather, tMinCelsius);
-
-          //Change the class of the unit buttons
-          $('#tempF').removeClass("selected").addClass("unselected");
-          $('#tempC').removeClass("unselected").addClass("selected");
-          $("#temp, .tMax, .tMin").fadeIn(500);
-        }
-
-        /*Change temperatures on chart*/
-        createChart(forecWeather, calcTempMaxC, calcTempMinC);
+      $('#tempC').off('click').on('click', function () {
+        toggleTempUnit('C', tCelsius, tFahrenheit, forecWeather)
       });
+
+      /*Change temperatures on chart*/
+      //        createChart(forecWeather, calcTempMaxC, calcTempMinC);
+      //      });
     });
 
   });

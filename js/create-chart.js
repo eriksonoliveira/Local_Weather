@@ -19,16 +19,10 @@ function createChart(forecWeather, calcMaxTemp, calcMinTemp) {
 
 
   /***Push the days of the week into 'temps' array***/
-  var d = new Date();
-  var week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
   $.each($(".day"), function (index, value) {
-    var forecDay = new Date(d.getTime() + 86400 * 1000 * (index));
-    var weekDay = week[forecDay.getDay()];
-    var weekDayTime = forecDay.getTime();
+    var day = getWeekdays(index);
 
-    $(this).html(weekDay);
-    temps[index].day = weekDayTime;
+    temps[index].day = day.weekDayTime;
 
   });
 
