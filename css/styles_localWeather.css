@@ -19,17 +19,6 @@ body * {
 
 #app {
   padding: 50px 0;
-  overflow: auto;
-}
-
-header {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 45px;
-  font-weight: 500;
-  text-shadow: 1px 1px black;
-  text-align: center;
-  background-color: transparent;
-  position: relative;
 }
 
 #infoBox {
@@ -40,13 +29,6 @@ header {
   margin: 35px auto;
   padding: 0px 10px;
   z-index: 1;
-}
-
-.icon {
-  font-size: 4em;
-  text-align: center;
-  margin-left: -8px;
-  padding-bottom: 5px;
 }
 
 .location-search {
@@ -76,13 +58,6 @@ header {
 .location-search:valid ~ .location-search-reset {
   display: block;
 }
-
-/*
-
-.location-search:focus:valid ~ .location-search-reset {
-  display: block;
-}
-*/
 
 .infoBox-search {
   text-align: center;
@@ -280,13 +255,11 @@ header {
 
 .tMin {
   font-size: .7em;
-  /*  color: #5383C3;*/
   color: #C3C3C3;
 }
 
 .tMax {
   display: block;
-  /*  color: #C36053;*/
 }
 
 .condF {
@@ -312,19 +285,15 @@ footer {
 }
 
 /***BACKGROUNDS***/
-
 /*clear*/
-
 /*day*/
 .a01d,
 .a02d {
-  /*  background-color: #007AD6;*/
   -webkit-background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url('../img/sunny.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url('../img/sunny.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 /*night*/
@@ -336,12 +305,28 @@ footer {
   background-size: cover;
 }
 
+/*broken clouds*/
+/*day*/
+.a03d {
+  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/broken_clouds.jpg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/broken_clouds.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*night*/
+.a03n {
+  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/night_clouds.jpg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/night_clouds.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /*cloudy*/
-.a03d,
 .a04d,
-.a03n,
 .a04n {
-  /*  background-color: #B9B9B9;*/
   -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/cloudy.jpg");
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/cloudy.jpg");
   background-position: center;
