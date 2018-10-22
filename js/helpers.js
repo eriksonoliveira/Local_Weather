@@ -100,19 +100,25 @@
   function toggleTempUnit(unit, tCelsius, tFahrenheit, forecWeather) {
     var prevUnit = '',
       temp = 0,
-      forecMaxTemp,
-      forecMinTemp;
+      maxTemp,
+      minTemp,
+      convertMaxTemp,
+      convertMinTemp;
 
     if (unit === 'C') {
       prevUnit = 'F';
       temp = tCelsius;
-      forecMaxTemp = tMaxCelsius;
-      forecMinTemp = tMinCelsius;
+      maxTemp = tMaxCelsius;
+      minTemp = tMinCelsius;
+      convertMaxTemp = calcTempMaxC;
+      convertMinTemp = calcTempMinC;
     } else {
       prevUnit = 'C';
       temp = tFahrenheit;
-      forecMaxTemp = tMaxFahrenheit;
-      forecMinTemp = tMinFahrenheit;
+      maxTemp = tMaxFahrenheit;
+      minTemp = tMinFahrenheit;
+      convertMaxTemp = calcTempMaxF;
+      convertMinTemp = calcTempMinF;
     };
 
     if ($('#temp' + prevUnit).hasClass("selected")) {
@@ -120,9 +126,11 @@
       //Current temp
       $('#temp').html(temp);
       //Change tMax forecast to fahrenheit
-      forecUnitSwitch('.tMax', forecWeather, forecMaxTemp);
+      forecUnitSwitch('.tMax', forecWeather, maxTemp);
       //Change Min forecast to fahrenheit
-      forecUnitSwitch('.tMin', forecWeather, forecMinTemp);
+      forecUnitSwitch('.tMin', forecWeather, minTemp);
+      //Update chart
+      createChart(forecWeather, convertMaxTemp, convertMinTemp);
 
       //Change the class of unit buttons
       $('#temp' + prevUnit).removeClass("selected").addClass("unselected");

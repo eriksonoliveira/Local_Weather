@@ -13,8 +13,8 @@ function createTempChart(dataset) {
     left: 50
   };
 
-  chartWidth = 500 - margin.left - margin.right;
-  chartHeight = 200 - margin.top - margin.bottom;
+  chartWidth = 380 - margin.left - margin.right;
+  chartHeight = 110 - margin.top - margin.bottom;
 
   width = chartWidth + margin.left + margin.right;
   height = chartHeight + margin.top + margin.bottom;
@@ -35,14 +35,6 @@ function createTempChart(dataset) {
   var y = d3.scale.linear()
     .range([chartHeight, 0]);
 
-  var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .ticks(d3.time.hour, 12)
-    .tickPadding(5)
-    .outerTickSize(0)
-    .tickFormat(timeFormat);
-
   x.domain(d3.extent(dataset, function (d) {
     return new Date(d.day);
   }));
@@ -51,17 +43,14 @@ function createTempChart(dataset) {
     return d.max;
   });
   var minY = d3.min(dataset, function (d) {
-    return d.min - 2;
+    return d.min;
   });
 
   y.domain([minY, maxY]);
 
   //Define the svg element
   var graph = d3.select("#graph").append("svg")
-    //.attr("width", width + margin.left + margin.right)
-    //.attr("height", height + margin.top + margin.bottom)
-    .attr("width", "100%")
-    .attr("height", "100%")
+    .attr("width", "100%").attr("height", "100%")
     .attr("viewBox", "0 0 " + width + " " + height)
     .attr("preserveAspectRatio", "xMinYMid meet")
     .append("g")
@@ -69,7 +58,7 @@ function createTempChart(dataset) {
 
   //Draw Lines
   var line = d3.svg.line()
-    .interpolate("cardinal")
+    .interpolate("linear")
     .x(function (d) {
       return x(new Date(d.day));
     })
@@ -91,16 +80,16 @@ function createTempChart(dataset) {
     .data([dataset])
     .attr("class", "line")
     .attr("d", line)
-    .attr("stroke", "#000")
-    .attr("stroke-width", 1.5)
+    .attr("stroke", "#D39323")
+    .attr("stroke-width", 1.0)
     .attr("fill", "none");
   //Min temperature
   var path2 = graph.append("path")
     .data([dataset])
     .attr("class", "line")
     .attr("d", line2)
-    .attr("stroke", "#838383")
-    .attr("stroke-width", 1.5)
+    .attr("stroke", "#23C3D3")
+    .attr("stroke-width", 1.0)
     .attr("fill", "none");
 
   //Make it responsive
@@ -133,9 +122,8 @@ function createTempChart(dataset) {
       return d;
     })
     .enter().append("circle")
-    .attr("r", 3.5)
-    .attr("stroke", "#fff")
-    .attr("fill", "#000")
+    .attr("r", 4.5)
+    .attr("fill", "#D39323")
     .attr("cx", function (d, i) {
       return x(d.day);
     })
@@ -144,11 +132,11 @@ function createTempChart(dataset) {
     })
     .on("mouseover", function () {
       d3.select(this)
-        .attr("r", 4.5);
+        .attr("r", 5.5);
     })
     .on("mouseout", function () {
       d3.select(this)
-        .attr("r", 3.5);
+        .attr("r", 4);
     });
 
   graph.selectAll("dot")
@@ -160,9 +148,8 @@ function createTempChart(dataset) {
       return d;
     })
     .enter().append("circle")
-    .attr("r", 3.5)
-    .attr("stroke", "#fff")
-    .attr("fill", "#838383")
+    .attr("r", 4.5)
+    .attr("fill", "#23C3D3")
     .attr("cx", function (d, i) {
       return x(d.day);
     })
@@ -171,14 +158,14 @@ function createTempChart(dataset) {
     })
     .on("mouseover", function () {
       d3.select(this)
-        .attr("r", 4.5);
+        .attr("r", 5.5);
     })
     .on("mouseout", function () {
       d3.select(this)
-        .attr("r", 3.5);
+        .attr("r", 4.5);
     });
 
-  //Show temperature values with the dots
+  //Show temperature labels with the dots
   graph.selectAll("label")
     .data([dataset])
     .enter().append("g")
@@ -196,7 +183,7 @@ function createTempChart(dataset) {
     })
     .attr("dx", "-.3em")
     .attr("dy", "-.65em")
-    .attr("fill", "#000")
+    .attr("fill", "#D39323")
     .text(function (d) {
       return d.max;
     });
@@ -218,7 +205,7 @@ function createTempChart(dataset) {
     })
     .attr("dx", "-.3em")
     .attr("dy", "1.2em")
-    .attr("fill", "#838383")
+    .attr("fill", "#23C3D3")
     .text(function (d) {
       return d.min;
     });

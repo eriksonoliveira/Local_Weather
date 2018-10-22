@@ -22,8 +22,7 @@ function createChart(forecWeather, calcMaxTemp, calcMinTemp) {
   $.each($(".day"), function (index, value) {
     var day = getWeekdays(index);
 
-    temps[index].day = day.weekDayTime;
-
+    temps[index].day = day.weekdayTime;
   });
 
   /***Draw the temperature chart***/

@@ -8,12 +8,16 @@ html {
   min-height: 100vh;
 }
 
+body {
+  position: relative;
+
+}
+
 body * {
   font-family: 'Quicksand', sans-serif;
 }
 
 #app {
-  margin-top: -20px;
   padding: 50px 0;
   overflow: auto;
 }
@@ -62,15 +66,23 @@ header {
   border: 0;
   font-size: 1.5rem;
   display: none;
+  z-index: 2;
 }
 
 .location-search::-ms-clear {
   display: none;
 }
 
+.location-search:valid ~ .location-search-reset {
+  display: block;
+}
+
+/*
+
 .location-search:focus:valid ~ .location-search-reset {
   display: block;
 }
+*/
 
 .infoBox-search {
   text-align: center;
@@ -99,14 +111,6 @@ header {
   color: rgb(220, 220, 220) !important;
 }
 
-.temperature {
-  display: block;
-  font-size: 5em;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .location {
   text-align: center;
   font-size: 1.3em;
@@ -115,46 +119,61 @@ header {
 
 #currWeather {
   margin: auto;
-  width: 18.5em;
-  height: 18.5em;
+  width: 16.5em;
+  height: 16.5em;
   border-radius: 50%;
-  background: linear-gradient(rgba(224, 224, 224, 0.4), rgba(0, 0, 0, 0.1));
+  background: linear-gradient(rgba(30, 30, 30, 0.1), rgba(30, 30, 30, 0.2));
   position: relative;
 }
 
 .currWeather-content {
+  font-size: 1.5rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-#tUnits {
-  display: inline-block;
-  width: 30px;
-  padding: 0 0px;
-  font-size: 2rem;
+.temperature {
+  max-height: 140px;
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-#tUnits > a {
-  display: none;
+#temp,
+.degrees {
+  font-size: 7em;
 }
+
+#tUnits {
+  width: 30px;
+  display: inline-block;
+  font-size: 1.4em;
+  position: relative;
+  top: -8px;
+  left: 15px;
+}
+
 
 #tempC:hover,
 #tempF:hover {
   text-decoration: none;
+  color: #fff;
 }
 
 .selected {
   color: #FFF;
   padding: 0px;
   font-weight: bold;
-  font-size: 2.6rem;
+  font-size: 1.3em;
   cursor: default;
+  padding: 2px 6px;
 }
 
 .unselected {
-  color: #C3C3C3;
+  color: #919191;
   text-shadow: 0px 1px #EEE;
   cursor: pointer;
   padding: 2px 6px;
@@ -170,37 +189,37 @@ header {
   display: block;
 }
 
-#condition {
-  font-size: 1em;
-}
-
 #WRU {
   font-size: 1em;
-  width: 280px;
+  width: 200px;
   margin: auto;
 }
 
-.WRU-element {
+#WRU * {
   width: 50%;
 }
 
 #wind {
   float: left;
+  text-align: left;
+}
+
+#RU i,
+#wind i {
+  padding-right: 4px;
+  display: inline;
+  font-size: 1.15em;
 }
 
 #wind i {
-  font-size: 20px;
-  padding: 0 4px;
+  font-size: 1.4em;
+  position: relative;
+  top: 2px;
 }
 
 #RU {
   float: right;
-}
-
-#RU i {
-  font-size: 18px;
-  padding: 0 5px;
-
+  text-align: right;
 }
 
 .iconColor {
@@ -208,15 +227,12 @@ header {
 }
 
 .forecast {
+  width: 100%;
   font-size: 18px;
   padding: 35px 0;
-  background: linear-gradient(rgba(112, 112, 112, 0.4), rgba(0, 0, 0, 0.4));
-  position: relative;
+  background: linear-gradient(rgba(10, 10, 10, 0.2), rgba(10, 10, 10, 0.5));
+  position: absolute;
   bottom: 0;
-}
-
-#charts {
-  margin-top: 35px;
 }
 
 .col-lg-4 {
@@ -303,6 +319,7 @@ footer {
 .a01d,
 .a02d {
   /*  background-color: #007AD6;*/
+  -webkit-background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url('../img/sunny.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url('../img/sunny.jpg');
   background-size: cover;
   background-position: center;
@@ -314,6 +331,7 @@ footer {
 .a01n,
 .a02n {
 
+  -webkit-background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/night-clear.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/night-clear.jpg');
   background-size: cover;
 }
@@ -324,6 +342,7 @@ footer {
 .a03n,
 .a04n {
   /*  background-color: #B9B9B9;*/
+  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/cloudy.jpg");
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/cloudy.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -333,6 +352,7 @@ footer {
 /*thunderstorm*/
 .a11d,
 .a11n {
+  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/thunderstorm.jpg");
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/thunderstorm.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -344,6 +364,7 @@ footer {
 .a10n,
 .a09d,
 .a10d {
+  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4)), url("../img/rain.jpg");
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4)), url("../img/rain.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -353,6 +374,7 @@ footer {
 /*Fog*/
 .a50d,
 .a50n {
+  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/fog.jpg");
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/fog.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -362,6 +384,7 @@ footer {
 /*Snow*/
 .a13d,
 .a13n {
+  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/snow.jpg");
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/snow.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -381,6 +404,7 @@ footer {
 }
 
 #graph {
+  display: none;
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 10px;
@@ -393,4 +417,10 @@ footer {
     max-width: 770px;
   }
 
+}
+
+@media only screen and (max-height: 860px) and (min-width: 768px) {
+  .forecast {
+    position: relative;
+  }
 }

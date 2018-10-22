@@ -77,7 +77,7 @@ function insertData(latitude, longitude, locationName) {
       });
 
       /*Create temp chart*/
-      //      createChart(forecWeather, calcTempMaxC, calcTempMinC);
+      createChart(forecWeather, calcTempMaxC, calcTempMinC);
 
 
       //toggle between celsius and Fahrenheit
@@ -87,18 +87,11 @@ function insertData(latitude, longitude, locationName) {
         toggleTempUnit('F', tCelsius, tFahrenheit, forecWeather)
       });
 
-      /*Change temperatures on chart*/
-      //        createChart(forecWeather, calcTempMaxF, calcTempMinF);
-      //      });
-
       /******Celsius******/
       $('#tempC').off('click').on('click', function () {
         toggleTempUnit('C', tCelsius, tFahrenheit, forecWeather)
       });
 
-      /*Change temperatures on chart*/
-      //        createChart(forecWeather, calcTempMaxC, calcTempMinC);
-      //      });
     });
 
   });
