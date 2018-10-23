@@ -289,8 +289,8 @@ footer {
 /*day*/
 .a01d,
 .a02d {
-  -webkit-background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url('../img/sunny.jpg');
-  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url('../img/sunny.jpg');
+  background-image: url('../img/sunny.jpg');
+  background-image: url('../img/sunny.jpg'), linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -299,17 +299,17 @@ footer {
 /*night*/
 .a01n,
 .a02n {
-
-  -webkit-background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/night-clear.jpg');
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/night-clear.jpg');
+  background-image: url('../img/night_clear.jpg');
+  background-image: url('../img/night_clear.jpg'), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   background-size: cover;
 }
 
 /*broken clouds*/
 /*day*/
 .a03d {
-  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/broken_clouds.jpg");
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/broken_clouds.jpg");
+  background-image: url("../img/broken_clouds.jpg");
+  /*Fallback*/
+  background-image: url("../img/broken_clouds.jpg"), linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -317,8 +317,8 @@ footer {
 
 /*night*/
 .a03n {
-  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/night_clouds.jpg");
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/night_clouds.jpg");
+  background-image: url("../img/night_clouds.jpg");
+  background-image: url("../img/night_clouds.jpg"), linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -327,8 +327,8 @@ footer {
 /*cloudy*/
 .a04d,
 .a04n {
-  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/cloudy.jpg");
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("../img/cloudy.jpg");
+  background-image: url("../img/cloudy.jpg");
+  background-image: url("../img/cloudy.jpg"), linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -337,8 +337,8 @@ footer {
 /*thunderstorm*/
 .a11d,
 .a11n {
-  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/thunderstorm.jpg");
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/thunderstorm.jpg");
+  background-image: url("../img/thunderstorm.jpg");
+  background-image: url("../img/thunderstorm.jpg"), linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -349,8 +349,8 @@ footer {
 .a10n,
 .a09d,
 .a10d {
-  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4)), url("../img/rain.jpg");
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4)), url("../img/rain.jpg");
+  background-image: url("../img/rain.jpg");
+  background-image: url("../img/rain.jpg"), linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -359,8 +359,8 @@ footer {
 /*Fog*/
 .a50d,
 .a50n {
-  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/fog.jpg");
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/fog.jpg");
+  background-image: url("../img/fog.jpg");
+  background-image: url("../img/fog.jpg"), linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -369,8 +369,8 @@ footer {
 /*Snow*/
 .a13d,
 .a13n {
-  -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/snow.jpg");
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1)), url("../img/snow.jpg");
+  background-image: url("../img/snow.jpg");
+  background-image: url("../img/snow.jpg"), linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
