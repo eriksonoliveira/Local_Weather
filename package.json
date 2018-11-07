@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^4.0.0",
+    "gulp-htmltidy": "^0.2.4",
     "gulp-inject": "^4.3.2",
     "gulp-uglify": "^3.0.1",
     "gulp-uglifycss": "^1.1.0"
