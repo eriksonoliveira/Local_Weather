@@ -86,13 +86,25 @@
     font-size: 10px;
   }
 
+  body .app {
+    padding-top: 1rem;
+  }
+
   .infoBox {
     font-size: 1.3rem !important;
     margin: 10px auto;
   }
 
+  .location {
+    margin: 1.2rem 0 1.5rem 0;
+  }
+
   #icon {
     margin-left: 10px;
+  }
+
+  .currWeather {
+    top: 0;
   }
 
   .currWeather-content {
@@ -161,11 +173,11 @@
     margin-top: 15px;
   }
 
-  .iconF {
+  .forecCondition .iconF {
     font-size: 2em;
   }
 
-  .condF {
+  .forecCondition .condF {
     font-size: 1em;
   }
 
@@ -182,13 +194,13 @@
   }
 }
 
-@media only screen and (max-height: 790px) and (max-width: 768px) and (min-width: 450px) {
+@media only screen and (max-height: 890px) and (max-width: 768px) and (min-width: 450px) {
   .forecast {
     position: relative;
   }
 }
 
-@media only screen and (max-height: 700px) and (max-width: 450px) {
+@media only screen and (max-height: 620px) and (max-width: 450px) {
   .forecast {
     position: relative;
   }

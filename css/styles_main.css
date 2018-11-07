@@ -8,6 +8,10 @@ html {
 
 body {
   position: relative; }
+  body #background {
+    min-height: 100vh;
+    width: 100%;
+    position: relative; }
   body .app {
     padding: 50px 0; }
 
@@ -76,7 +80,7 @@ body * {
   width: 16.5em;
   height: 16.5em;
   border-radius: 50%;
-  background: linear-gradient(rgba(10, 10, 10, 0.1), rgba(10, 10, 10, 0.2));
+  background: linear-gradient(rgba(10, 10, 10, 0.2), rgba(10, 10, 10, 0.2));
   position: relative;
   top: 20px; }
 
@@ -157,7 +161,7 @@ body * {
   width: 100%;
   font-size: 18px;
   padding: 35px 0;
-  background: linear-gradient(rgba(5, 5, 5, 0.2), rgba(5, 5, 5, 0.5));
+  background: linear-gradient(rgba(5, 5, 5, 0.3), rgba(5, 5, 5, 0.5));
   position: absolute;
   bottom: 0; }
 
