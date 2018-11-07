@@ -1,0 +1,12 @@
+@mixin placeholder-style() {
+  color: rgb(220, 220, 220) !important;
+  opacity: 1 !important;
+}
+
+@mixin background-image($image, $color1, $color2) {
+  background-image: url($image);
+  background-image: linear-gradient($color1, $color2), url($image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

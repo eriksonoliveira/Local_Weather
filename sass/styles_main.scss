@@ -1,0 +1,385 @@
+@import "variables";
+@import "mixins";
+
+@import "https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand";
+
+body,
+html {
+  color: $color-white !important;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+}
+
+body {
+  position: relative;
+
+  .app {
+    padding: 50px 0;
+  }
+}
+
+body * {
+  font-family: $font-Quicksand;
+}
+
+.infoBox {
+  font-size: 20px !important;
+  font-weight: 100;
+  color: $color-white;
+  width: 21em;
+  margin: 0 auto 35px auto;
+  padding: 0px 10px;
+  z-index: 1;
+}
+
+.infoBox-search {
+  text-align: center;
+
+  .location-search {
+    width: 25rem;
+    font-size: 1.5rem;
+    padding: 5px 25px 5px 7px;
+    background-color: rgba(20, 20, 20, 0.2);
+    border: 1px solid $color-white;
+  }
+
+  .location-search-reset {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-52%);
+    background-color: transparent;
+    border: 0;
+    font-size: 1.5rem;
+    display: none;
+    z-index: 2;
+  }
+
+  .location-search::-ms-clear {
+    display: none;
+  }
+
+  .location-search:valid ~ .location-search-reset {
+    display: block;
+  }
+}
+
+::placeholder {
+  @include placeholder-style();
+}
+
+::-moz-placeholder {
+  @include placeholder-style();
+}
+
+:-moz-placeholder {
+  @include placeholder-style();
+}
+
+:-ms-input-placeholder {
+  @include placeholder-style();
+}
+
+::-ms-input-placeholder {
+  @include placeholder-style();
+}
+
+.location {
+  text-align: center;
+  font-size: 1.3em;
+  margin-bottom: 3rem;
+}
+
+.currWeather {
+  margin: auto;
+  width: 16.5em;
+  height: 16.5em;
+  border-radius: 50%;
+  background: $box-background;
+  position: relative;
+  top: 20px;
+}
+
+.currWeather-content {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.temperature {
+  max-height: 140px;
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  #temp,
+  .degrees {
+    font-size: 6.5em;
+  }
+
+  .tUnits {
+    width: 30px;
+    display: inline-block;
+    font-size: 1.4em;
+    position: relative;
+    top: -8px;
+    left: 15px;
+
+    #tempC:hover,
+    #tempF:hover {
+      text-decoration: none;
+      color: $color-white;
+    }
+
+    .selected {
+      color: $color-white;
+      padding: 0px;
+      font-weight: bold;
+      font-size: 1.3em;
+      cursor: default;
+      padding: 2px 6px;
+    }
+
+    .unselected {
+      color: #d9d9d9;
+      cursor: pointer;
+      padding: 2px 6px;
+      border: 1px solid rgba(06, 90, 138, 0);
+    }
+
+    .unselected:hover {
+      border: 1px solid $color-white;
+      background-color: rgba(180, 180, 180, 0.3);
+    }
+  }
+}
+
+.weatherCondition {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.WRU {
+  font-size: 1em;
+  width: 200px;
+  margin: auto;
+
+  #wind {
+    float: left;
+  }
+
+  #RU {
+    float: right;
+  }
+
+  #RU i,
+  #wind i {
+    padding-right: 4px;
+    display: inline;
+    font-size: 1.15em;
+  }
+
+  #wind i {
+    font-size: 1.4em;
+    position: relative;
+    top: 2px;
+  }
+}
+
+.WRU * {
+  width: 50%;
+  text-align: center;
+}
+
+.iconColor {
+  color: darkblue;
+}
+
+.forecast {
+  width: 100%;
+  font-size: 18px;
+  padding: 35px 0;
+  background: $forecast-box-background;
+  position: absolute;
+  bottom: 0;
+}
+
+.col-lg-4 {
+  margin: auto;
+}
+
+.forecBox {
+  width: 210px;
+  height: 190px;
+  margin: auto;
+  padding-top: 2px;
+  box-sizing: border-box;
+
+  p {
+    font-size: 1.1em;
+  }
+}
+
+.forecCondition {
+  display: inline-block;
+  max-width: 90px;
+  margin: auto;
+  margin-top: 10px;
+
+  .iconF {
+    font-size: 3em;
+    text-align: center;
+    margin-left: 5px;
+    box-sizing: border-box;
+  }
+
+  .condF {
+    font-size: 0.7em;
+    display: inherit;
+  }
+}
+
+.tempForecast {
+  font-size: 1.6em;
+  display: inline-block;
+  margin-left: 15px;
+  position: relative;
+  top: -10px;
+
+  .tMin {
+    font-size: 0.7em;
+    color: #c3c3c3;
+  }
+
+  .tMax {
+    display: block;
+  }
+}
+
+/***BACKGROUNDS***/
+/*clear*/
+/*day*/
+.a01d,
+.a02d {
+  @include background-image(
+    "../img/sunny.jpg",
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.2)
+  );
+}
+
+/*night*/
+.a01n,
+.a02n {
+  @include background-image(
+    "../img/night_clear.jpg",
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  );
+}
+
+/*broken clouds*/
+/*day*/
+.a03d {
+  @include background-image(
+    "../img/broken_clouds.jpg",
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+/*night*/
+.a03n {
+  @include background-image(
+    "../img/night_clouds.jpg",
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+/*cloudy*/
+.a04d,
+.a04n {
+  @include background-image(
+    "../img/cloudy.jpg",
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+/*thunderstorm*/
+.a11d,
+.a11n {
+  @include background-image(
+    "../img/thunderstorm.jpg",
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+/*Rain, Showers*/
+.a09n,
+.a10n,
+.a09d,
+.a10d {
+  @include background-image(
+    "../img/rain.jpg",
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+/*Fog*/
+.a50d,
+.a50n {
+  @include background-image(
+    "../img/fog.jpg",
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+/*Snow*/
+.a13d,
+.a13n {
+  @include background-image(
+    "../img/snow.jpg",
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+.label text {
+  font-family: $font-Quicksand;
+  font-size: 15px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke-width: 1;
+}
+
+#graph {
+  display: none;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 770px;
+  }
+}
+
+@media only screen and (max-height: 830px) and (min-width: 768px) {
+  .forecast {
+    position: relative;
+  }
+}

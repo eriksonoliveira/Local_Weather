@@ -1,23 +1,23 @@
-/* for small screens */
+/* rules for small screens */
 
 @media only screen and (max-width: 768px) {
   html {
     font-size: 13px;
   }
 
-  #app {
+  .app {
     margin-top: 0;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
   }
 
-  #infoBox {
-    font-size: 1.5rem;
+  .infoBox {
+    font-size: 1.5rem !important;
   }
 
-  #currWeather {
-    width: 19.5em;
-    height: 19.5em;
+  .currWeather {
     margin: auto;
+    height: 19.5em;
+    width: 19.5em;
   }
 
   .currWeather-content {
@@ -28,12 +28,12 @@
     max-height: 110px;
   }
 
-  #temp,
-  .degrees {
-    font-size: 7em;
+  .temperature #temp,
+  .temperature .degrees {
+    font-size: 6em;
   }
 
-  #WRU {
+  .WRU {
     width: 170px;
   }
 
@@ -47,8 +47,8 @@
   }
 
   .forecBox {
+    height: 120px;
     width: 90%;
-    height: 120px
   }
 
   .forecCondition {
@@ -61,25 +61,24 @@
   }
 
   .tempForecast {
+    display: none;
     margin: auto;
     margin-top: 45px;
-    display: none;
   }
 
   #graph {
+    display: block;
     margin-top: 10px;
     margin-bottom: 10px;
-    display: block;
   }
 
   .axis path,
   .axis line {
     fill: none;
+    shape-rendering: crispEdges;
     stroke: grey;
     stroke-width: 1;
-    shape-rendering: crispEdges;
   }
-
 }
 
 @media only screen and (max-width: 450px) {
@@ -87,9 +86,9 @@
     font-size: 10px;
   }
 
-  #infoBox {
+  .infoBox {
+    font-size: 1.3rem !important;
     margin: 10px auto;
-    font-size: 1.3rem;
   }
 
   #icon {
@@ -104,22 +103,28 @@
     max-height: 95px;
   }
 
-  #temp,
-  .degrees {
-    font-size: 5.0em;
+  .temperature #temp,
+  .temperature .degrees {
+    font-size: 5.5em;
   }
 
-  #tUnits {
+  .temperature .tUnits {
     font-size: 1.3em;
+    left: 0;
+    width: 15px;
   }
 
-  #WRU {
+  .weatherCondition {
+    margin-top: 15px;
+  }
+
+  .WRU {
     width: 145px;
   }
 
   .forecast {
     font-size: 1.3rem;
-    padding-top: 5px;
+    padding: 0;
   }
 
   .forecast .container {
@@ -175,7 +180,6 @@
   .label text {
     font-size: 20px;
   }
-
 }
 
 @media only screen and (max-height: 790px) and (max-width: 768px) and (min-width: 450px) {

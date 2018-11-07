@@ -7,7 +7,7 @@ function createChart(forecWeather, calcMaxTemp, calcMinTemp) {
   /***Create array to store temperature and date***/
   var temps = [];
 
-  for (i = 0; i < forecWeather.list.length; i++) {
+  for (var i = 0; i < forecWeather.list.length; i++) {
     var maT = calcMaxTemp(forecWeather.list[i].temp.max),
       miT = calcMinTemp(forecWeather.list[i].temp.min);
     temps.push({
@@ -17,9 +17,8 @@ function createChart(forecWeather, calcMaxTemp, calcMinTemp) {
     });
   }
 
-
   /***Push the days of the week into 'temps' array***/
-  $.each($(".day"), function (index, value) {
+  $.each($(".day"), function(index, value) {
     var day = getWeekdays(index);
 
     temps[index].day = day.weekdayTime;
