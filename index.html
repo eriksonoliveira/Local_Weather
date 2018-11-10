@@ -9,9 +9,11 @@
     />
     <meta charset="utf-8" />
 
+    <!-- build:css -->
     <link href="css/normalize.css" rel="stylesheet" />
-    <link href="css/styles_main.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
     <link href="css/styles_localWeather_sm.css" rel="stylesheet" />
+    <!-- endbuild -->
     <link
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       rel="stylesheet"
@@ -152,6 +154,9 @@
       integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
       crossorigin="anonymous"
     ></script>
+
+    <!-- build:js -->
+    <script src="../dist/js/polyfill.js"></script>
     <script src="js/helpers.js"></script>
     <script src="js/chart.js"></script>
     <script src="js/create-chart.js"></script>
@@ -159,6 +164,7 @@
     <script src="js/async.js"></script>
     <script src="js/script.js"></script>
     <script src="js/load-place.js"></script>
+    <!-- endbuild -->
     <!-- LOAD GOOGLE MAPS API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAapMcQH94FLAnnmlzllygPJLdkI_SXJ8U&libraries=places&callback=initialize"></script>
   </body>
