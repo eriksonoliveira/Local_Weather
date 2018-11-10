@@ -1,23 +1,12 @@
-$(document).ready(function () {
-
-
-  /***Call ip-api to get user's location***/
-  $.getJSON("https://ipapi.co/json/", function (geop) {
-    var latitude,
-      longitude,
-      city,
-      country,
-      locationName;
-
-    /*Get location details*/
-    latitude = geop.latitude;
-    longitude = geop.longitude;
-    city = geop.city;
-    country = geop.country;
-    locationName = $("<span>" + city + ", " + country + "</span>");
+// On page load, get user location from https://ipapi.co and call inserData()
+asyncCall
+  .location()
+  .then(resp => JSON.parse(resp))
+  .then(geoposition => {
+    const { latitude, longitude, city, country } = geoposition;
+    const locationName = "<span>" + city + ", " + country + "</span>";
 
     /*Get weather data and add it to the page*/
     insertData(latitude, longitude, locationName);
-  });
-
-});
+  })
+  .catch(error => console.log(error));
