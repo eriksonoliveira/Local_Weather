@@ -22,6 +22,5 @@ asyncCall.location = function() {
   });
 };
 
-asyncCall.currentWeather = function() {};
-
-asyncCall.forecastWeather = function() {};
+// asyncCall.currentWeather = function() {};
+// asyncCall.forecastWeather = function() {};
